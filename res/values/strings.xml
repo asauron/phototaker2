@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">phototaker2</string>
+    <string name="button_photo">TakePhoto</string>
+    <string name="menu_settings">Menu Settings</string>
+    <string name="button_message">Say something</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_display_message">DisplayMessageActivity</string>
+
+</resources>
