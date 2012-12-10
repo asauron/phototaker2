@@ -7,5 +7,6 @@
     <string name="button_message">Say something</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_display_message">DisplayMessageActivity</string>
+    <string name="button_maps">Show My Location</string>
 
 </resources>
