@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 	
 	public void showMaps(View view) {
 		
-		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("google.navigation:q=My+Location"));
+		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=My+Location"));
 		startActivity(intent);
 		
 	
