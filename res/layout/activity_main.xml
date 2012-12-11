@@ -24,5 +24,11 @@
         android:layout_height="wrap_content"
         android:onClick="showMaps"
         android:text="@string/button_maps" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendEmail"
+        android:text="@string/send_email" />
     
 </LinearLayout>

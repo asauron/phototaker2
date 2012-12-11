@@ -8,5 +8,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_display_message">DisplayMessageActivity</string>
     <string name="button_maps">Show My Location</string>
+    <string name="send_email">Send Email</string>
 
 </resources>

@@ -56,5 +56,12 @@ public class MainActivity extends Activity {
 
 
 	}
+	
+	public void sendEmail(View view) {
+		Intent email = new Intent(Intent.ACTION_SEND);
+		email.setType("message/rfc822");
+		startActivity(Intent.createChooser(email, "Choose an Email client :"));
+	
+	}
 
 }
