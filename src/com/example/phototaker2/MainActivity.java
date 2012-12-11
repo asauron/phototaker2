@@ -2,6 +2,10 @@ package com.example.phototaker2;
 
 /*
  * http://crw-cmu.googlecode.com/svn-history/r734/luis/PhotoIntentActivity/src/com/example/android/photobyintent/PhotoIntentActivity.java
+ * http://stackoverflow.com/a/7266616/18852
+ * http://www.mkyong.com/android/how-to-send-email-in-android/
+ * http://stackoverflow.com/questions/5151159/calling-one-activity-from-another
+ * http://stackoverflow.com/questions/10189044/android-activity-flow
  */
 
 import java.io.File;
@@ -18,7 +22,6 @@ import android.view.View;
 public class MainActivity extends Activity {
 
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
