@@ -1,12 +1,19 @@
 package com.example.phototaker2;
 
+import java.io.File;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,4 +91,20 @@ public class CycleActivity extends Activity implements LocationListener {
 	    Toast.makeText(this, "Disabled provider " + provider,
 	        Toast.LENGTH_SHORT).show();
 	  }
-	} 
+	  
+	  public void capturePhoto(View view) {
+			// Take photo
+		    latituteField = (TextView) findViewById(R.id.TextView02);
+		    longitudeField = (TextView) findViewById(R.id.TextView04);
+		    String latitude = latituteField.getText().toString();
+		    String longitude = longitudeField.getText().toString();
+		    
+			File sdcard = Environment.getExternalStorageDirectory();
+			String photoname = sdcard.getAbsolutePath() + File.separator + latitude +"-" + longitude + "-beesphoto.png";
+			Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+			Uri uriSavedImage = Uri.fromFile(new File(photoname));
+			takePictureIntent.putExtra("output", uriSavedImage);
+			startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */			
+		}
+
+} 

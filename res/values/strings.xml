@@ -11,5 +11,6 @@
     <string name="send_email">Send Email</string>
     <string name="activity_cycle">Activity Cycle</string>
     <string name="title_activity_cycle">CycleActivity</string>
+    <string name="capture">Capture photo</string>
 
 </resources>
