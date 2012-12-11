@@ -104,20 +104,15 @@ public class CycleActivity extends Activity implements LocationListener {
 			Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 			Uri uriSavedImage = Uri.fromFile(new File(photoname));
 			takePictureIntent.putExtra("output", uriSavedImage);
-			startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */	
+			startActivityForResult(takePictureIntent, 1); /* What is RESULT_OK */	
 			
 		
 		}
 	  
 	  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		  if (requestCode == 1) {
-		       if(resultCode == RESULT_OK) {
-		   		Intent email = new Intent(Intent.ACTION_SEND);
-				email.setType("message/rfc822");
-				startActivity(Intent.createChooser(email, "Choose an Email client :"));
-		       }
-
-		  }
+	   	Intent email = new Intent(Intent.ACTION_SEND);
+		email.setType("message/rfc822");
+		startActivity(Intent.createChooser(email, "Choose an Email client :"));
 	  }
 	  
 } 
