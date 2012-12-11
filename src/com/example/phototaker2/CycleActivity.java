@@ -111,7 +111,20 @@ public class CycleActivity extends Activity implements LocationListener {
 	  
 	  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	   	Intent email = new Intent(Intent.ACTION_SEND);
+	   	
+	    latituteField = (TextView) findViewById(R.id.TextView02);
+	    longitudeField = (TextView) findViewById(R.id.TextView04);
+	    String latitude = latituteField.getText().toString();
+	    String longitude = longitudeField.getText().toString();
+	    String subject = "Latitude: " + latitude + " Longitude: " + longitude;
+	    
+		File sdcard = Environment.getExternalStorageDirectory();
+		String photoname = sdcard.getAbsolutePath() + File.separator + latitude +"-" + longitude + "-beesphoto.png";
+	   	
 		email.setType("message/rfc822");
+		email.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+		email.putExtra(Intent.EXTRA_TEXT, "This was captured at: " + subject);
+		email.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+ photoname));
 		startActivity(Intent.createChooser(email, "Choose an Email client :"));
 	  }
 	  
