@@ -63,5 +63,16 @@ public class MainActivity extends Activity {
 		startActivity(Intent.createChooser(email, "Choose an Email client :"));
 	
 	}
+	
+	public void activityCycle(View view){
+		// Activity Workflow
+		// Capture lat, long and store it for email.
+		// Capture photo and store it for email.
+		// Open email with lat, long and photo attached.
+		
+		Intent intent = new Intent(this, CycleActivity.class);
+		startActivity(intent);
+	
+	}
 
 }
