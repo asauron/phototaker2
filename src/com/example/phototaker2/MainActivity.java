@@ -6,6 +6,7 @@ package com.example.phototaker2;
  * http://www.mkyong.com/android/how-to-send-email-in-android/
  * http://stackoverflow.com/questions/5151159/calling-one-activity-from-another
  * http://stackoverflow.com/questions/10189044/android-activity-flow
+ * http://www.vogella.com/articles/AndroidLocationAPI/article.html
  */
 
 import java.io.File;
