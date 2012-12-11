@@ -71,6 +71,9 @@ public class MainActivity extends Activity {
 		// Open email with lat, long and photo attached.
 		
 		Intent intent = new Intent(this, CycleActivity.class);
+		Bundle b = new Bundle();
+		b.putString("message", "some message to send");
+		intent.putExtras(b);
 		startActivity(intent);
 	
 	}
