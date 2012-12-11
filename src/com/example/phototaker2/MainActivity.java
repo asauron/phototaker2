@@ -16,7 +16,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends Activity {
@@ -31,8 +30,13 @@ public class MainActivity extends Activity {
 
 	public void takePhoto(View view) {
 		// Take photo
+		File sdcard = Environment.getExternalStorageDirectory();
+		String photoname = sdcard.getAbsolutePath() + File.separator + "beesphoto.png";
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		startActivity(takePictureIntent);
+		Uri uriSavedImage = Uri.fromFile(new File(photoname));
+		takePictureIntent.putExtra("output", uriSavedImage);
+		startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */
+		
 
 	}
 
