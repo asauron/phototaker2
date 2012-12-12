@@ -12,5 +12,7 @@
     <string name="activity_cycle">Activity Cycle</string>
     <string name="title_activity_cycle">CycleActivity</string>
     <string name="capture">Capture photo</string>
+    <string name="take_tutorial">Take a Tutorial</string>
+    <string name="title_activity_take_tutorial">TakeTutorial</string>
 
 </resources>

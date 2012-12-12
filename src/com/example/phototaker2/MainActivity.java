@@ -7,6 +7,7 @@ package com.example.phototaker2;
  * http://stackoverflow.com/questions/5151159/calling-one-activity-from-another
  * http://stackoverflow.com/questions/10189044/android-activity-flow
  * http://www.vogella.com/articles/AndroidLocationAPI/article.html
+ * http://www.androidhive.info/2011/10/android-listview-tutorial/
  */
 
 import java.io.File;
@@ -77,6 +78,12 @@ public class MainActivity extends Activity {
 		intent.putExtras(b);
 		startActivity(intent);
 	
+	}
+	
+	public void takeTutorial(View view) {
+		Intent intent = new Intent(this, TakeTutorial.class);
+		startActivity(intent);
+		
 	}
 
 }
