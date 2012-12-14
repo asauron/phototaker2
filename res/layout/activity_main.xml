@@ -42,5 +42,11 @@
         android:layout_height="wrap_content"
         android:onClick="takeTutorial"
         android:text="@string/take_tutorial" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="displayNotification"
+        android:text="@string/display_notification" />
     
 </LinearLayout>

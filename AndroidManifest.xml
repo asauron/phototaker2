@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="16" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -50,6 +50,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.phototaker2.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.phototaker2.CreateNotificationActivity"
+            android:label="@string/title_activity_create_notification"
+            android:parentActivityName="com.example.phototaker2.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.phototaker2.NotificationReceiverActivity"
+            android:label="@string/title_activity_notification_receiver"
+            android:parentActivityName="com.example.phototaker2.CreateNotificationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.CreateNotificationActivity" />
         </activity>
     </application>
 

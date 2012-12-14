@@ -85,5 +85,10 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 		
 	}
+	
+	public void displayNotification(View view){
+		Intent intent = new Intent(this, CreateNotificationActivity.class);
+		startActivity(intent);
+	}
 
 }
