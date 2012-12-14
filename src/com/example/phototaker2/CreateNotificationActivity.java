@@ -24,11 +24,20 @@ public class CreateNotificationActivity extends Activity {
 
 	    // Build notification
 	    // Actions are just fake
-	    Notification noti = new Notification.Builder(this)
-	        .setContentTitle("New Notification")
-	        .setContentText("Hello from me!").setSmallIcon(R.drawable.ic_notify)
-	        .setLargeIcon(null)
-	        .build();
+	    Notification.Builder builder = new Notification.Builder(this);
+	    builder
+	    .setSmallIcon(R.drawable.ic_notify)
+	    .setContentTitle("Notification Title")
+	    .setContentText("Hello There!")
+	    .setContentInfo("Content")
+	    .setTicker("Android Notification")
+	    .setLights(0xFFFF0000, 500, 500) //setLights (int argb, int onMs, int offMs)
+	    .setContentIntent(pIntent)
+	    .setAutoCancel(true);
+	    
+	    @SuppressWarnings("deprecation") // For use with API 11.
+		Notification noti = builder.getNotification();
+	    
 
 	    NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	    // Hide the notification after its selected
