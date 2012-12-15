@@ -18,5 +18,7 @@
     <string name="title_activity_create_notification">CreateNotificationActivity</string>
     <string name="title_activity_notification_receiver">NotificationReceiverActivity</string>
     <string name="create_notification">Create Notification</string>
+    <string name="title_activity_android">Android</string>
+    <string name="hello_android">Hello Android</string>
 
 </resources>

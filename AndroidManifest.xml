@@ -67,6 +67,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.phototaker2.CreateNotificationActivity" />
         </activity>
+        <activity
+            android:name="com.example.phototaker2.Android"
+            android:label="@string/title_activity_android"
+            android:parentActivityName="com.example.phototaker2.TakeTutorial" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
     </application>
 
 </manifest>

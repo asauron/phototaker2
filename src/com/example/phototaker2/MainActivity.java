@@ -8,6 +8,7 @@ package com.example.phototaker2;
  * http://stackoverflow.com/questions/10189044/android-activity-flow
  * http://www.vogella.com/articles/AndroidLocationAPI/article.html
  * http://www.androidhive.info/2011/10/android-listview-tutorial/
+ * http://stackoverflow.com/questions/4080165/android-onlistitemclick-in-activity
  */
 
 import java.io.File;
