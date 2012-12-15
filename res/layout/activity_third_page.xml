@@ -4,22 +4,36 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/imageView1"
+        <ImageButton
+            android:id="@+id/imageButton1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.02"
-            android:src="@drawable/beepic" />
+            android:src="@drawable/lightrap1" />
 
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.00"
-            android:ems="10"
-            android:inputType="textMultiLine" >
+            android:text="Creating a light trap"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <requestFocus />
-        </EditText>
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This trap is made from a safety light holder and a half-gallon juice bottle.Cut the top off the bottle, invert it and secure the light cage to the bottle with twist ties. Here, we use a compact black light bulb  that has a visual spectrum particularly attractive to insects.  If you prefer, using a normal compact florescent bulb is also fine."
+            />
+                
+                
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>

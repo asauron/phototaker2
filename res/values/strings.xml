@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">phototaker2</string>
+    <string name="app_name">Zombee Watch</string>
     <string name="button_photo">TakePhoto</string>
     <string name="menu_settings">Menu Settings</string>
     <string name="button_message">Say something</string>
@@ -23,6 +23,6 @@
     <string name="title_activity_third_page">ThirdPage</string>
     <string name="title_activity_fourth_page">FourthPage</string>
     <string name="title_activity_fifth_page">FifthPage</string>
-    <string name="beepic">Looking for honeybees.Flying around lights at night.Look for honey bees.flying around lights at night,stranded under porch lights, street lights, during the day crawling, disoriented or dead on sidewalk. Do not collect honey bees near hives unless you are a beekeepe.r</string>
+    <string name="beepic">Flying around lights at night,stranded under porch lights, street lights, during the day crawling, disoriented or dead on sidewalk. Do not collect honey bees near hives unless you are a beekeepe.r</string>
 
 </resources>
