@@ -18,5 +18,11 @@
     <string name="title_activity_create_notification">CreateNotificationActivity</string>
     <string name="title_activity_notification_receiver">NotificationReceiverActivity</string>
     <string name="create_notification">Create Notification</string>
+    <string name="title_activity_first_page">FirstPage</string>
+    <string name="title_activity_second_page">SecondPage</string>
+    <string name="title_activity_third_page">ThirdPage</string>
+    <string name="title_activity_fourth_page">FourthPage</string>
+    <string name="title_activity_fifth_page">FifthPage</string>
+    <string name="beepic">Looking for honeybees.Flying around lights at night.Look for honey bees.flying around lights at night,stranded under porch lights, street lights, during the day crawling, disoriented or dead on sidewalk. Do not collect honey bees near hives unless you are a beekeepe.r</string>
 
 </resources>

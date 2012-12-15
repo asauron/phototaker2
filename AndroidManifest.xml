@@ -67,6 +67,41 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.phototaker2.CreateNotificationActivity" />
         </activity>
+        <activity
+            android:name=".FirstPage"
+            android:label="@string/title_activity_first_page" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
+        <activity
+            android:name=".SecondPage"
+            android:label="@string/title_activity_second_page" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
+        <activity
+            android:name=".ThirdPage"
+            android:label="@string/title_activity_third_page" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
+        <activity
+            android:name=".FourthPage"
+            android:label="@string/title_activity_fourth_page" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
+        <activity
+            android:name=".FifthPage"
+            android:label="@string/title_activity_fifth_page" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
     </application>
 
 </manifest>
