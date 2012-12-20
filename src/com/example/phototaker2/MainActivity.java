@@ -34,12 +34,12 @@ public class MainActivity extends Activity {
 	public void takePhoto(View view) {
 		// Take photo
 		File sdcard = Environment.getExternalStorageDirectory();
-		String photoname = sdcard.getAbsolutePath() + File.separator + "beesphoto.png";
+		String photoname = sdcard.getAbsolutePath() + File.separator
+				+ "beesphoto.png";
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		Uri uriSavedImage = Uri.fromFile(new File(photoname));
 		takePictureIntent.putExtra("output", uriSavedImage);
 		startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */
-		
 
 	}
 
@@ -54,42 +54,48 @@ public class MainActivity extends Activity {
 
 	public void showMaps(View view) {
 
-		Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=My+Location"));
+		Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+				Uri.parse("geo:0,0?q=My+Location"));
 		startActivity(intent);
 
-
 	}
-	
+
 	public void sendEmail(View view) {
 		Intent email = new Intent(Intent.ACTION_SEND);
 		email.setType("message/rfc822");
 		startActivity(Intent.createChooser(email, "Choose an Email client :"));
-	
+
 	}
-	
-	public void activityCycle(View view){
+
+	public void activityCycle(View view) {
 		// Activity Workflow
 		// Capture lat, long and store it for email.
 		// Capture photo and store it for email.
 		// Open email with lat, long and photo attached.
-		
+
 		Intent intent = new Intent(this, CycleActivity.class);
 		Bundle b = new Bundle();
 		b.putString("message", "some message to send");
 		intent.putExtras(b);
 		startActivity(intent);
-	
+
 	}
-	
+
 	public void takeTutorial(View view) {
 		Intent intent = new Intent(this, TakeTutorial.class);
 		startActivity(intent);
-		
+
 	}
-	
-	public void displayNotification(View view){
+
+	public void displayNotification(View view) {
 		Intent intent = new Intent(this, CreateNotificationActivity.class);
 		startActivity(intent);
 	}
 
+	public void startService(View view) {
+		Intent serviceIntent = new Intent();
+		serviceIntent
+				.setAction("com.example.phototaker2.service.TakePhotoService");
+		startService(serviceIntent);
+	}
 }

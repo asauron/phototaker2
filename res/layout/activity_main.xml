@@ -49,4 +49,10 @@
         android:onClick="displayNotification"
         android:text="@string/display_notification" />
     
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startService"
+        android:text="@string/service_name" />
+    
 </LinearLayout>
