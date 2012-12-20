@@ -23,7 +23,7 @@
     <string name="title_activity_third_page">ThirdPage</string>
     <string name="title_activity_fourth_page">FourthPage</string>
     <string name="title_activity_fifth_page">FifthPage</string>
-    <string name="beepic">Flying around lights at night,stranded under porch lights, street lights, during the day crawling, disoriented or dead on sidewalk. Do not collect honey bees near hives unless you are a beekeepe.r</string>
+    <string name="beepic">Flying around lights at night,\n stranded under porch lights, street lights, during the day crawling, disoriented or dead on sidewalk. *******Do not collect honey bees near hives unless you are a beekeeper</string>
     <string name="title_activity_setting_up">SettingUp</string>
     <string name="title_activity_monitor_sample">Monitor the sample</string>
     <string name="title_activity_keep_sample">Keep the sample</string>
