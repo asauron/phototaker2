@@ -30,6 +30,7 @@
         <activity
             android:name="com.example.phototaker2.DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
+          
             android:parentActivityName="com.example.phototaker2.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -98,6 +99,34 @@
         <activity
             android:name=".FifthPage"
             android:label="@string/title_activity_fifth_page" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
+        <activity
+            android:name=".SettingUp"
+            android:label="@string/title_activity_setting_up" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
+        <activity
+            android:name=".MonitorSample"
+            android:label="@string/title_activity_monitor_sample" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
+        <activity
+            android:name=".KeepSample"
+            android:label="@string/title_activity_keep_sample" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.TakeTutorial" />
+        </activity>
+        <activity
+            android:name=".NoPupae"
+            android:label="@string/title_activity_no_pupae" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.phototaker2.TakeTutorial" />
