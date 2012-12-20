@@ -20,5 +20,6 @@
     <string name="create_notification">Create Notification</string>
     <string name="title_activity_android">Android</string>
     <string name="hello_android">Hello Android</string>
+    <string name="service_name">Take Photo Regularly</string>
 
 </resources>

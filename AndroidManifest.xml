@@ -75,6 +75,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.phototaker2.TakeTutorial" />
         </activity>
+        
+        <service
+  			android:name="TakePhotoService"
+  			android:process=":takephoto_process" 
+  			android:icon="@drawable/ic_launcher"
+  			android:label="@string/service_name">
+        </service>
+        
+        <receiver android:name="MyScheduleReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="MyStartServiceReceiver" >
+        </receiver>
+        
     </application>
 
 </manifest>

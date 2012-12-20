@@ -1,16 +1,23 @@
 package com.example.phototaker2;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
+import android.widget.TextView;
 
 public class Android extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		/* TextView mTextSample = (TextView) findViewById(R.id.androidid);
+		String text = "<h2>Html text</h2><ol><li>one</li><li>two</li></ol>";
+		mTextSample.setText(Html.fromHtml(text)); */
+		
 		setContentView(R.layout.activity_android);
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
