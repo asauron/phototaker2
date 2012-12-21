@@ -9,13 +9,14 @@ public class TakePhotoService extends Service {
 
 	private final IBinder mBinder = new MyBinder();
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onStart(Intent intent, int startId) {
-		super.onStart(intent, startId);
+		// super.onStart(intent, startId);
 
 		Intent dialogIntent = new Intent(getBaseContext(), CycleActivity.class);
+		dialogIntent.setAction(Intent.ACTION_VIEW);
 		dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		dialogIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 		getApplication().startActivity(dialogIntent);
 	}
 

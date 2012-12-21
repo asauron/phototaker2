@@ -78,7 +78,7 @@
         
         <service
   			android:name="TakePhotoService"
-  			android:process=":takephoto_process" 
+  			android:process="takephoto_process" 
   			android:icon="@drawable/ic_launcher"
   			android:label="@string/service_name">
         </service>
