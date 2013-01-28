@@ -77,7 +77,7 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:onClick="displayNotification"
+                            android:onClick="createCalender"
                             android:background="@android:color/transparent"
                             android:textColor="#FF0000"
                             android:text="@string/display_notification" />

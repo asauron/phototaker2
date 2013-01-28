@@ -11,12 +11,16 @@ package com.example.phototaker2;
  */
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Events;
 import android.provider.MediaStore;
 import android.view.View;
 
@@ -90,6 +94,22 @@ public class MainActivity extends Activity {
 	public void displayNotification(View view){
 		Intent intent = new Intent(this, CreateNotificationActivity.class);
 		startActivity(intent);
+	}
+	
+	public void createCalender(View view){
+		Intent calIntent = new Intent(Intent.ACTION_EDIT);
+		calIntent.setType("vnd.android.cursor.item/event");
+		
+		calIntent.putExtra(Events.TITLE, "Time to take the zombee picture!");
+		calIntent.putExtra(Events.DESCRIPTION, "Please mention the stage of the pupae development");
+		GregorianCalendar calDate = new GregorianCalendar();
+		calIntent.putExtra(Events.RRULE, "FREQ=WEEKLY;COUNT=11;WKST=SU;BYDAY=TU,TH");
+		calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+		calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+		     calDate.getTimeInMillis());
+		calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+		     calDate.getTimeInMillis());
+		startActivity(calIntent);
 	}
 
 }
