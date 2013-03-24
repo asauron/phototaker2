@@ -30,4 +30,8 @@ you have found stranded bees or, if you are a beekeeper, near your bee hive/s. P
     <string name="title_activity_keep_sample">Keep the sample</string>
     <string name="title_activity_no_pupae">NoPupae</string>
 
+    <string name="menu_insert">Add Item</string>
+    <string name="no_notes">No Notes Exist</string>
+    <string name="hello_database">Hello Database</string>
+
 </resources>

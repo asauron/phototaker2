@@ -12,7 +12,8 @@ package com.example.phototaker2;
  */
 
 import java.io.File;
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import android.app.Activity;
@@ -23,6 +24,7 @@ import android.os.Environment;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends Activity {
@@ -35,11 +37,28 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 	}
 
+	private File getDir() {
+		File sdDir = Environment
+		   .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+		return new File(sdDir, "BeesPhotos");
+	}
+
+
 	public void takePhoto(View view) {
 		// Take photo
-		File sdcard = Environment.getExternalStorageDirectory();
-		String photoname = sdcard.getAbsolutePath() + File.separator
-				+ "beesphoto.png";
+		File pictureFileDir = getDir();
+	    if (!pictureFileDir.exists() && !pictureFileDir.mkdirs()) {
+	        Log.d("takePhoto", "Can't create directory to save image.");
+	        return;
+	    }
+
+
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss");
+	    String date = dateFormat.format(new Date());
+	    String photoFile = "Picture_" + date + ".png";
+		//File sdcard = Environment.getExternalStorageDirectory();
+		String photoname = pictureFileDir.getPath() + File.separator + photoFile;
+	    // String photoname = sdcard.getAbsolutePath() + File.separator + photoFile;
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		Uri uriSavedImage = Uri.fromFile(new File(photoname));
 		takePictureIntent.putExtra("output", uriSavedImage);

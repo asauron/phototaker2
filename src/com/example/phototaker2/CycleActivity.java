@@ -35,7 +35,7 @@ public class CycleActivity extends Activity implements LocationListener {
 
 	    // Get the location manager
 	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-	    // Define the criteria how to select the locatioin provider -> use
+	    // Define the criteria how to select the location provider -> use
 	    // default
 	    Criteria criteria = new Criteria();
 	    provider = locationManager.getBestProvider(criteria, false);
@@ -58,7 +58,7 @@ public class CycleActivity extends Activity implements LocationListener {
 	    locationManager.requestLocationUpdates(provider, 400, 1, this);
 	  }
 
-	  /* Remove the locationlistener updates when Activity is paused */
+	  /* Remove the location listener updates when Activity is paused */
 	  @Override
 	  protected void onPause() {
 	    super.onPause();
