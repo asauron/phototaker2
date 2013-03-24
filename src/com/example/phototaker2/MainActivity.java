@@ -96,11 +96,11 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, CreateNotificationActivity.class);
 		startActivity(intent);
 	}
-	
+
 	public void createCalender(View view){
 		Intent calIntent = new Intent(Intent.ACTION_EDIT);
 		calIntent.setType("vnd.android.cursor.item/event");
-		
+
 		calIntent.putExtra(Events.TITLE, "Time to take the zombee picture!");
 		calIntent.putExtra(Events.DESCRIPTION, "Please mention the stage of the pupae development");
 		GregorianCalendar calDate = new GregorianCalendar();
@@ -113,10 +113,4 @@ public class MainActivity extends Activity {
 		startActivity(calIntent);
 	}
 
-	public void startService(View view) {
-		Intent serviceIntent = new Intent();
-		serviceIntent
-				.setAction("com.example.phototaker2.service.TakePhotoService");
-		startService(serviceIntent);
-	}
 }
