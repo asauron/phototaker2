@@ -10,8 +10,8 @@ import android.util.Log;
 
 public class ZombieDBAdapter {
 
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_BODY = "body";
+    public static final String KEY_TITLE = "zombiename";
+    public static final String KEY_BODY = "photopath";
     public static final String KEY_ROWID = "_id";
 
     private static final String TAG = "ZombieDbAdapter";
@@ -19,16 +19,14 @@ public class ZombieDBAdapter {
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
 
-    /**
-     * Database creation sql statement
-     */
+    
     private static final String DATABASE_CREATE =
-        "create table notes (_id integer primary key autoincrement, "
-        + "title text not null, body text not null);";
+        "create table ZombieTable (_id integer primary key autoincrement, "
+        + "zombiename text not null, photopath text not null);";
 
-    private static final String DATABASE_NAME = "data";
-    private static final String DATABASE_TABLE = "notes";
-    private static final int DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "ZombieDataBase";
+    private static final String DATABASE_TABLE = "ZombieTable";
+    private static final int DATABASE_VERSION = 1;
 
     private final Context mCtx; /* ors: why is this context? */
 
