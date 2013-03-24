@@ -132,11 +132,10 @@
             android:layout_height="wrap_content" >
         </TableRow>
     </TableLayout>
-    
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="startService"
-        android:text="@string/service_name" />
-    
+        android:onClick="startService"/>
+
 </LinearLayout>
