@@ -31,11 +31,17 @@ import android.view.View;
 public class MainActivity extends Activity {
 
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+	
+	private ZombieDBAdapter mDbHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+        mDbHelper = new ZombieDBAdapter(this);
+        mDbHelper.open();
+        
 	}
 
 	private File getDir() {
@@ -64,7 +70,11 @@ public class MainActivity extends Activity {
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		Uri uriSavedImage = Uri.fromFile(new File(photoname));
 		takePictureIntent.putExtra("output", uriSavedImage);
-		startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */
+		startActivityForResult(takePictureIntent, RESULT_OK);
+		
+		// Add the Photo Name and Photo Path to the Database here.
+		mDbHelper.createNote(photoFile, photoname);
+		
 
 	}
 

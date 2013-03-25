@@ -93,7 +93,5 @@ public class ZombieDBEdit extends Activity {
             mDbHelper.updateNote(mRowId, title, body);
         }
     }
-
-
     
 }
