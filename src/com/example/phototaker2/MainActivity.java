@@ -111,5 +111,10 @@ public class MainActivity extends Activity {
 		     calDate.getTimeInMillis());
 		startActivity(calIntent);
 	}
+	
+	public void startObservation(View view){
+		Intent intent = new Intent(this, ObservationActivity.class);
+		startActivity(intent);
+	}
 
 }

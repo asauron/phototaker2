@@ -27,7 +27,7 @@
                     android:background="@android:color/transparent"
                     android:onClick="takeTutorial"
                     android:textColor="#FF0000"
-                    android:text="@string/take_tutorial" />
+                    android:text="About ZomBeeWatch" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,21 +42,15 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="63dp"
-                            android:onClick="showMaps"
+                            android:onClick="takeTutorial"
                             android:background="@android:color/transparent"
                             android:textColor="#FF0000"
-                            android:text="@string/button_maps" />
+                            android:text="ZombeeWatch Tutorial" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="63dp"
-                    android:onClick="takePhoto"
-                    android:background="@android:color/transparent"
-                    android:textColor="#FF0000"
-                    android:text="@string/button_photo" />
+                
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -77,10 +71,10 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:onClick="createCalender"
+                            android:onClick="startObservation"
                             android:background="@android:color/transparent"
                             android:textColor="#FF0000"
-                            android:text="@string/display_notification" />
+                            android:text="Observations" />
 
                     </TableRow>
 
@@ -90,47 +84,6 @@
 
         </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="61dp"
-                    android:onClick="activityCycle"
-                    android:background="@android:color/transparent"
-                    android:textColor="#FF0000"
-                    android:text="@string/activity_cycle" />
-            </LinearLayout>
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:layout_width="136dp"
-                android:layout_height="63dp"
-                android:onClick="sendEmail"
-                android:background="@android:color/transparent"
-                android:textColor="#FF0000"
-                android:text="@string/send_email" />
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-    </TableLayout>
-    
-</LinearLayout>
+        </TableLayout>
+        </LinearLayout>
+        
