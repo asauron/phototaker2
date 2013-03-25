@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
 	}
 
 
+	@SuppressLint("SimpleDateFormat")
 	public void takePhoto(View view) {
 		// Take photo
 		File pictureFileDir = getDir();

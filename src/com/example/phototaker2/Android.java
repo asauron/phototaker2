@@ -3,10 +3,8 @@ package com.example.phototaker2;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class Android extends Activity {
 
