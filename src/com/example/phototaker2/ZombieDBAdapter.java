@@ -28,7 +28,7 @@ public class ZombieDBAdapter {
     private static final String DATABASE_TABLE = "ZombieTable";
     private static final int DATABASE_VERSION = 1;
 
-    private final Context mCtx; /* ors: why is this context? */
+    private final Context mCtx;
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
