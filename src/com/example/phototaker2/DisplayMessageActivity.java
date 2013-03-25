@@ -2,30 +2,122 @@ package com.example.phototaker2;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 
 
 public class DisplayMessageActivity extends ListActivity {
 
+    private static final int ACTIVITY_CREATE=0;
+    private static final int ACTIVITY_EDIT=1;
+
+    private static final int INSERT_ID = Menu.FIRST;
+    private static final int DELETE_ID = Menu.FIRST + 1;
+
+	
 	private int mNoteNumber = 1;
 	private ZombieDBAdapter mDbHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
 		super.onCreate(savedInstanceState);
-	    Intent intent = getIntent();
-	    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-
-	    setContentView(R.layout.notepad_list);
+        setContentView(R.layout.notes_list);
+		// Intent intent = getIntent();
+	    // String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         mDbHelper = new ZombieDBAdapter(this);
         mDbHelper.open();
-        createNote(message);
+        fillData();
+        registerForContextMenu(getListView());
+        // createNote(message);
     }
 
     private void createNote(String note) {
-        String noteName =  " Title " + mNoteNumber++;
+        Intent i = new Intent(this, NoteEdit.class);
+    	String noteName =  " Title " + mNoteNumber++;
         mDbHelper.createNote(noteName, note);
+        startActivityForResult(i, ACTIVITY_CREATE);
+
     }
 
+    @SuppressWarnings("deprecation")
+	private void fillData() {
+        Cursor notesCursor = mDbHelper.fetchAllNotes();
+        startManagingCursor(notesCursor);
+
+        // Create an array to specify the fields we want to display in the list (only TITLE)
+        String[] from = new String[]{ ZombieDBAdapter.KEY_TITLE};
+
+        // and an array of the fields we want to bind those fields to (in this case just text1)
+        int[] to = new int[]{R.id.text1};
+
+        // Now create a simple cursor adapter and set it to display
+        SimpleCursorAdapter notes = 
+            new SimpleCursorAdapter(this, R.layout.notes_row, notesCursor, from, to);
+        setListAdapter(notes);
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        fillData();
+    }
+    
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent i = new Intent(this, NoteEdit.class);
+        i.putExtra(ZombieDBAdapter.KEY_ROWID, id);
+        startActivityForResult(i, ACTIVITY_EDIT);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.add(0, INSERT_ID, 0, R.string.menu_insert);
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        switch(item.getItemId()) {
+            case INSERT_ID:
+                createNote();
+                return true;
+        }
+
+        return super.onMenuItemSelected(featureId, item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+            ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add(0, DELETE_ID, 0, R.string.menu_delete);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case DELETE_ID:
+                AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+                mDbHelper.deleteNote(info.id);
+                fillData();
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    private void createNote() {
+        Intent i = new Intent(this, NoteEdit.class);
+        startActivityForResult(i, ACTIVITY_CREATE);
+    }
+        
 }
