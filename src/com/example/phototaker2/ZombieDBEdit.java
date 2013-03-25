@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-public class NoteEdit extends Activity {
+public class ZombieDBEdit extends Activity {
 
     private EditText mTitleText;
     private EditText mBodyText;

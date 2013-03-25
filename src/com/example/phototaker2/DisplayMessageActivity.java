@@ -24,7 +24,7 @@ public class DisplayMessageActivity extends ListActivity {
 
     private ZombieDBAdapter mDbHelper;
 
-    /** Called when the activity is first created. */
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,7 @@ public class DisplayMessageActivity extends ListActivity {
         registerForContextMenu(getListView());
     }
 
+    /* What does fillData do? */
     @SuppressWarnings("deprecation")
 	private void fillData() {
         Cursor notesCursor = mDbHelper.fetchAllNotes();
@@ -90,14 +91,14 @@ public class DisplayMessageActivity extends ListActivity {
     }
 
     private void createNote() {
-        Intent i = new Intent(this, NoteEdit.class);
+        Intent i = new Intent(this, ZombieDBEdit.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Intent i = new Intent(this, NoteEdit.class);
+        Intent i = new Intent(this, ZombieDBEdit.class);
         i.putExtra(ZombieDBAdapter.KEY_ROWID, id);
         startActivityForResult(i, ACTIVITY_EDIT);
     }

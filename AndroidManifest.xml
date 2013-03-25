@@ -132,7 +132,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.phototaker2.TakeTutorial" />
         </activity>
-         <activity android:name=".NoteEdit" />
+         <activity android:name="com.example.phototaker2.ZombieDBEdit" />
     </application>
 
 </manifest>
