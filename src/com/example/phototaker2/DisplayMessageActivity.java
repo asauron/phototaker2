@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 
 
 public class DisplayMessageActivity extends ListActivity {
@@ -22,29 +22,17 @@ public class DisplayMessageActivity extends ListActivity {
     private static final int INSERT_ID = Menu.FIRST;
     private static final int DELETE_ID = Menu.FIRST + 1;
 
-	
-	private int mNoteNumber = 1;
-	private ZombieDBAdapter mDbHelper;
+    private ZombieDBAdapter mDbHelper;
 
+    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.notes_list);
-		// Intent intent = getIntent();
-	    // String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         mDbHelper = new ZombieDBAdapter(this);
         mDbHelper.open();
         fillData();
         registerForContextMenu(getListView());
-        // createNote(message);
-    }
-
-    private void createNote(String note) {
-        Intent i = new Intent(this, NoteEdit.class);
-    	String noteName =  " Title " + mNoteNumber++;
-        mDbHelper.createNote(noteName, note);
-        startActivityForResult(i, ACTIVITY_CREATE);
-
     }
 
     @SuppressWarnings("deprecation")
@@ -53,7 +41,7 @@ public class DisplayMessageActivity extends ListActivity {
         startManagingCursor(notesCursor);
 
         // Create an array to specify the fields we want to display in the list (only TITLE)
-        String[] from = new String[]{ ZombieDBAdapter.KEY_TITLE};
+        String[] from = new String[]{ZombieDBAdapter.KEY_TITLE};
 
         // and an array of the fields we want to bind those fields to (in this case just text1)
         int[] to = new int[]{R.id.text1};
@@ -62,20 +50,6 @@ public class DisplayMessageActivity extends ListActivity {
         SimpleCursorAdapter notes = 
             new SimpleCursorAdapter(this, R.layout.notes_row, notesCursor, from, to);
         setListAdapter(notes);
-    }
-    
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        fillData();
-    }
-    
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        Intent i = new Intent(this, NoteEdit.class);
-        i.putExtra(ZombieDBAdapter.KEY_ROWID, id);
-        startActivityForResult(i, ACTIVITY_EDIT);
     }
 
     @Override
@@ -119,5 +93,20 @@ public class DisplayMessageActivity extends ListActivity {
         Intent i = new Intent(this, NoteEdit.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
-        
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent i = new Intent(this, NoteEdit.class);
+        i.putExtra(ZombieDBAdapter.KEY_ROWID, id);
+        startActivityForResult(i, ACTIVITY_EDIT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        fillData();
+    }	
+	
+	
 }

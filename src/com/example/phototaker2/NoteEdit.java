@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 public class NoteEdit extends Activity {
 
     private EditText mTitleText;
@@ -67,7 +68,6 @@ public class NoteEdit extends Activity {
         outState.putSerializable(ZombieDBAdapter.KEY_ROWID, mRowId);
     }
 
-	
     @Override
     protected void onPause() {
         super.onPause();
@@ -93,5 +93,7 @@ public class NoteEdit extends Activity {
             mDbHelper.updateNote(mRowId, title, body);
         }
     }
+
+
     
 }
