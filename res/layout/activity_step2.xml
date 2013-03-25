@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_height="fill_parent">
+<!--Put form controls here-->
+
+<TextView
+    android:id="@+id/TextViewTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Step 2 - Days 5-14"
+    android:textSize="10pt" >
+ </TextView> 
+
+<EditText
+    android:id="@+id/EditTextName"
+    android:layout_width="302dp"
+    android:layout_height="wrap_content"
+    android:hint="# of pupae" >
+
+ </EditText>
+
+
+
+ 
+
+<EditText  
+    android:id="@+id/EditTextFeedbackBody"  
+    android:layout_height="wrap_content"  
+    android:hint="Notes"  
+    android:inputType="textMultiLine"  
+    android:lines="5"  
+    android:layout_width="fill_parent">  
+</EditText>
+
+<CheckBox  
+    android:id="@+id/CheckBoxResponse"  
+    android:layout_height="wrap_content"  
+    android:text="Save Observation"  
+    android:layout_width="fill_parent">  
+</CheckBox>
+
+ <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp"
+                    android:onClick="takePhoto"
+                    android:text="@string/button_photo" />
+
+
+                    
+                      
+                      <Button  
+    android:id="@+id/ButtonSendFeedback"  
+    android:layout_height="wrap_content"  
+    android:text="Save Observation"  
+    android:onClick="sendFeedback"  
+    android:layout_width="fill_parent">  
+</Button> 
+    </LinearLayout>
+</ScrollView>

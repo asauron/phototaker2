@@ -14,7 +14,7 @@
     <string name="capture">Capture photo</string>
     <string name="take_tutorial">Take a Tutorial</string>
     <string name="title_activity_take_tutorial">TakeTutorial</string>
-    <string name="display_notification">Display Notification</string>
+    <string name="display_notification">Set Remainder</string>
     <string name="title_activity_create_notification">CreateNotificationActivity</string>
     <string name="title_activity_notification_receiver">NotificationReceiverActivity</string>
     <string name="create_notification">Create Notification</string>
@@ -23,12 +23,23 @@
     <string name="title_activity_third_page">ThirdPage</string>
     <string name="title_activity_fourth_page">FourthPage</string>
     <string name="title_activity_fifth_page">FifthPage</string>
-    <string name="beepic">Flying around lights at night,\n stranded under porch lights, street lights, during the day crawling, disoriented or dead on sidewalk. Construct a light trap and place it near an area where
-you have found stranded bees or, if you are a beekeeper, near your bee hive/s. Please do not collect honey bees near hives unless you are a beekeeper</string>
+    <string name="beepic">Flying around lights at night,\n stranded under porch lights, street lights, during the day crawling, disoriented or dead on sidewalk. Construct a light trap and place it near an area where 
+    you have found stranded bees or, if you are a beekeeper, near your bee hive/s. Please do not collect honey bees near hives unless you are a beekeeper</string>
     <string name="title_activity_setting_up">SettingUp</string>
     <string name="title_activity_monitor_sample">Monitor the sample</string>
     <string name="title_activity_keep_sample">Keep the sample</string>
     <string name="title_activity_no_pupae">NoPupae</string>
+    <string name="title_activity_step1">Step 1</string>
+    <string name="feedbacktype">Method Name</string>
+    <string name="feedbacktype1">Stranded, near a light</string>
+    <string name="feedbacktype2">Stranded, not near a light</string>
+    <string name="feedbacktype3">Light trap</string>
+    <string name="title_activity_step2">Step 2</string>
+    <string name="title_activity_step3">Step 3</string>
+    <string name="title_activity_observation">Observations</string>
+    <string name="title_activity_steps">Steps</string>
+    <string name="title_activity_observation_steps">Observation Steps</string>
+    <string name="title_activity_create_steps">Observation Steps</string>
 
     <string name="menu_insert">Add Item</string>
     <string name="no_notes">No Notes Exist</string>

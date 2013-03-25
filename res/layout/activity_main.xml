@@ -27,7 +27,7 @@
                     android:background="@android:color/transparent"
                     android:onClick="takeTutorial"
                     android:textColor="#FF0000"
-                    android:text="@string/take_tutorial" />
+                    android:text="About ZomBeeWatch" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,21 +42,15 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="63dp"
-                            android:onClick="showMaps"
+                            android:onClick="takeTutorial"
                             android:background="@android:color/transparent"
                             android:textColor="#FF0000"
-                            android:text="@string/button_maps" />
+                            android:text="ZombeeWatch Tutorial" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="63dp"
-                    android:onClick="takePhoto"
-                    android:background="@android:color/transparent"
-                    android:textColor="#FF0000"
-                    android:text="@string/button_photo" />
+                
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -77,10 +71,10 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:onClick="createCalender"
+                            android:onClick="startObservation"
                             android:background="@android:color/transparent"
                             android:textColor="#FF0000"
-                            android:text="@string/display_notification" />
+                            android:text="Observations" />
 
                     </TableRow>
 
