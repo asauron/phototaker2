@@ -14,16 +14,7 @@
         android:onClick="createObservations"
         android:text="Create New Sample " />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="168dp"
-        android:onClick="takeTutorial"
-        android:text=" View Completed Samples" />
+   
 
     <Button
         android:id="@+id/button2"
@@ -33,7 +24,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="24dp"
-        android:onClick="takeTutorial"
+        android:onClick="pendingObservations"
         android:text="View Pending Samples" />
 
     <Button

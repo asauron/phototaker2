@@ -157,7 +157,6 @@
             android:label="@string/title_activity_observation" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
         <activity
@@ -172,12 +171,18 @@
             android:label="@string/title_activity_observation_steps" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
         <activity
             android:name=".CreateSteps"
             android:label="@string/title_activity_create_steps" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.MainActivity" />
+        </activity>
+        <activity
+            android:name=".PendingObservation"
+            android:label="@string/title_activity_pending_observation" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.phototaker2.MainActivity" />

@@ -40,7 +40,6 @@
     <string name="title_activity_steps">Steps</string>
     <string name="title_activity_observation_steps">Observation Steps</string>
     <string name="title_activity_create_steps">Observation Steps</string>
-
     <string name="menu_insert">Add Item</string>
     <string name="no_notes">No Notes Exist</string>
     <string name="hello_database">View Database</string>
@@ -49,5 +48,6 @@
     <string name="confirm">NoteEditConfirm</string>
     <string name="edit_note">EditNote</string>
     <string name="menu_delete">NoteEdit_Delete</string>
+    <string name="title_activity_pending_observation">Pending Observations</string>
 
 </resources>

@@ -25,4 +25,11 @@ public class ObservationActivity extends Activity {
 		Intent intent = new Intent(this, CreateSteps.class);
 		startActivity(intent);
 	}
+    
+    public void pendingObservations(View view){
+		Intent intent = new Intent(this, PendingObservation.class);
+		startActivity(intent);
+	}
+    
+    
 }
