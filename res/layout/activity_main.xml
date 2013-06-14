@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/beepic"
+   
     android:orientation="vertical" >
 
     <TableLayout
@@ -24,9 +24,9 @@
                 <Button
                     android:layout_width="314dp"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
+               
                     android:onClick="takeTutorial"
-                    android:textColor="#FF0000"
+                 
                     android:text="About ZomBeeWatch" />
 
                 <LinearLayout
@@ -43,8 +43,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="63dp"
                             android:onClick="takeTutorial"
-                            android:background="@android:color/transparent"
-                            android:textColor="#FF0000"
+                           
                             android:text="ZombeeWatch Tutorial" />
                     </LinearLayout>
 
@@ -72,8 +71,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:onClick="startObservation"
-                            android:background="@android:color/transparent"
-                            android:textColor="#FF0000"
+                          
                             android:text="Observations" />
 
                     </TableRow>
@@ -84,7 +82,7 @@
 
         </TableRow>
 
-        <TableRow
+   <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >

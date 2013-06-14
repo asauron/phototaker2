@@ -2,6 +2,8 @@ package com.example.phototaker2;
 
 import java.io.File;
 
+import com.example.phototaker2.model.Zombees;
+
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +25,9 @@ import android.support.v4.app.NavUtils;
 public class Step1 extends Activity {
 	
 	
-
+	private Zombees currentZombee  = null;
+	
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +59,23 @@ public class Step1 extends Activity {
     	
     	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
     	String name = nameField.getText().toString();  
+    	currentZombee.setTitle(name);
+    	
     	final EditText emailField = (EditText) findViewById(R.id.EditTextEmail);  
     	String email = emailField.getText().toString();  
+    	currentZombee.setNumberofbees(email);
+    	
     	final EditText feedbackField = (EditText) findViewById(R.id.EditTextFeedbackBody);  
     	String feedback = feedbackField.getText().toString();
+    	currentZombee.setNotes1(feedback);
     	
     	final Spinner feedbackSpinner = (Spinner) findViewById(R.id.SpinnerFeedbackType);  
     	String feedbackType = feedbackSpinner.getSelectedItem().toString();
+    	currentZombee.setMethod(feedbackType);
     	
     	final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
     	boolean bRequiresResponse = responseCheckbox.isChecked(); 
+    	
     	
     	
     } 
