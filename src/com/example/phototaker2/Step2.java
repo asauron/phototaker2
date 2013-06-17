@@ -2,6 +2,8 @@ package com.example.phototaker2;
 
 import java.io.File;
 
+import com.example.phototaker2.model.Zombees;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +20,8 @@ import android.support.v4.app.NavUtils;
 
 public class Step2 extends Activity {
 
+	
+	private Zombees currentZombee = null;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +51,14 @@ public class Step2 extends Activity {
     	
     	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
     	String name = nameField.getText().toString();  
+    	currentZombee.setPupae(name);
+    	
     	
     	//final EditText emailField = (EditText) findViewById(R.id.EditTextEmail);  
     	//String email = emailField.getText().toString();  
     	final EditText feedbackField = (EditText) findViewById(R.id.EditTextFeedbackBody);  
     	String feedback = feedbackField.getText().toString();
+    	currentZombee.setNotes2(feedback);
     	
     	//final Spinner feedbackSpinner = (Spinner) findViewById(R.id.SpinnerFeedbackType);  
     	//String feedbackType = feedbackSpinner.getSelectedItem().toString();
@@ -65,7 +72,9 @@ public class Step2 extends Activity {
 	public void takePhoto(View view) {
 		// Take photo
 		File sdcard = Environment.getExternalStorageDirectory();
-		String photoname = sdcard.getAbsolutePath() + File.separator + "beesphoto.png";
+		String photoname = sdcard.getAbsolutePath() + File.separator + "beesphoto2.png";
+		currentZombee.setImage2(photoname);
+		
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		Uri uriSavedImage = Uri.fromFile(new File(photoname));
 		takePictureIntent.putExtra("output", uriSavedImage);

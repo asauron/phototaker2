@@ -88,7 +88,7 @@ public class Step1 extends Activity {
 		Uri uriSavedImage = Uri.fromFile(new File(photoname));
 		takePictureIntent.putExtra("output", uriSavedImage);
 		startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */
-		
+		currentZombee.setImage1(photoname);
 
 	}
     
