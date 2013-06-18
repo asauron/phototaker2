@@ -138,21 +138,7 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
-	public void createCalender(View view){
-		Intent calIntent = new Intent(Intent.ACTION_EDIT);
-		calIntent.setType("vnd.android.cursor.item/event");
 
-		calIntent.putExtra(Events.TITLE, "Time to take the zombee picture!");
-		calIntent.putExtra(Events.DESCRIPTION, "Please mention the stage of the pupae development");
-		GregorianCalendar calDate = new GregorianCalendar();
-		calIntent.putExtra(Events.RRULE, "FREQ=WEEKLY;COUNT=11;WKST=SU;BYDAY=TU,TH");
-		calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
-		calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-		     calDate.getTimeInMillis());
-		calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
-		     calDate.getTimeInMillis());
-		startActivity(calIntent);
-	}
 	
 	public void startObservation(View view){
 		Intent intent = new Intent(this, ObservationActivity.class);

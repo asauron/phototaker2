@@ -1,6 +1,7 @@
 package com.example.phototaker2;
 
 import java.io.File;
+import java.util.GregorianCalendar;
 
 import com.example.phototaker2.db.ZomBeeDataSource;
 import com.example.phototaker2.model.Zombees;
@@ -9,7 +10,9 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.CalendarContract;
 import android.provider.MediaStore;
+import android.provider.CalendarContract.Events;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
@@ -37,7 +40,7 @@ public class Step1 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step1);
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        
+        Log.i(LOGTAG,"WHAT");
         
     }
 
@@ -60,10 +63,11 @@ public class Step1 extends Activity {
     
     public void sendFeedback(View button) {  
         // Do click handling here  
-    	
+    	Log.i(LOGTAG,"name is ");
     	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
     	String name = nameField.getText().toString();  
     	currentZombee.setTitle(name);
+    	
     	
     	final EditText emailField = (EditText) findViewById(R.id.EditTextEmail);  
     	String email = emailField.getText().toString();  
@@ -77,13 +81,12 @@ public class Step1 extends Activity {
     	String feedbackType = feedbackSpinner.getSelectedItem().toString();
     	currentZombee.setMethod(feedbackType);
     	
-    	final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
-    	boolean bRequiresResponse = responseCheckbox.isChecked(); 
+    Log.i(LOGTAG,"CLose here");
     	
-    	if(bRequiresResponse){
-    		currentZombee = datasource.create(currentZombee);
-        	Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
-    	}
+
+   		//currentZombee = datasource.create(currentZombee);
+   		//Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
+
     	
     } 
     
@@ -95,9 +98,29 @@ public class Step1 extends Activity {
 		Uri uriSavedImage = Uri.fromFile(new File(photoname));
 		takePictureIntent.putExtra("output", uriSavedImage);
 		startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */
-		currentZombee.setImage1(photoname);
+		//currentZombee.setImage1(photoname);
 
 	}
+	
+	public void createCalender(View view){
+		Intent calIntent = new Intent(Intent.ACTION_EDIT);
+		calIntent.setType("vnd.android.cursor.item/event");
+
+		calIntent.putExtra(Events.TITLE, "Time to take the zombee picture!");
+		calIntent.putExtra(Events.DESCRIPTION, "Please mention the stage of the pupae development");
+		GregorianCalendar calDate = new GregorianCalendar();
+		calIntent.putExtra(Events.RRULE, "FREQ=WEEKLY;COUNT=11;WKST=SU;BYDAY=TU,TH");
+		calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+		calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+		     calDate.getTimeInMillis());
+		calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+		     calDate.getTimeInMillis());
+		startActivity(calIntent);
+	}
+	
+	
+	
+	
 	
 	
     

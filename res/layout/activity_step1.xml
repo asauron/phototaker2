@@ -104,12 +104,7 @@
 
         
         
-<CheckBox  
-    android:id="@+id/CheckBoxResponse"  
-    android:layout_height="wrap_content"  
-    android:text="Save Observation"  
-    android:layout_width="fill_parent">  
-</CheckBox>
+
 
  <Button
                     android:layout_width="match_parent"
@@ -128,7 +123,7 @@
                       <Button  
     android:id="@+id/ButtonSendFeedback"  
     android:layout_height="wrap_content"  
-    android:text="Send Email"  
+    android:text="Save Observation"  
     android:onClick="sendFeedback"  
     android:layout_width="fill_parent">  
 </Button> 
