@@ -2,6 +2,7 @@ package com.example.phototaker2;
 
 import java.io.File;
 
+import com.example.phototaker2.db.ZomBeeDataSource;
 import com.example.phototaker2.model.Zombees;
 
 import android.location.LocationManager;
@@ -11,6 +12,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,8 +26,10 @@ import android.support.v4.app.NavUtils;
 
 public class Step1 extends Activity {
 	
-	
+	public static final String LOGTAG="bees bees bees   ";
 	private Zombees currentZombee  = null;
+	ZomBeeDataSource datasource;
+	
 	
 	
     @Override
@@ -76,7 +80,10 @@ public class Step1 extends Activity {
     	final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
     	boolean bRequiresResponse = responseCheckbox.isChecked(); 
     	
-    	
+    	if(bRequiresResponse){
+    		currentZombee = datasource.create(currentZombee);
+        	Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
+    	}
     	
     } 
     
@@ -91,6 +98,9 @@ public class Step1 extends Activity {
 		currentZombee.setImage1(photoname);
 
 	}
+	
+	
     
+	
 
 }
