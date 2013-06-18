@@ -3,7 +3,7 @@ package com.example.phototaker2.model;
 import java.text.NumberFormat;
 
 public class Zombees {
-	private int id;
+	private long id;
 	private String title;
 	private String numberofbees;
 	private String method;
@@ -29,11 +29,11 @@ public class Zombees {
 
 
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(long insertid) {
+		this.id = insertid;
 	}
 	public String getTitle() {
 		return title;

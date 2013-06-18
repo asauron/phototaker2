@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import com.example.phototaker2.db.ZomBeeDataSource;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -33,14 +35,22 @@ public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	
 	private ZombieDBAdapter mDbHelper;
+	ZomBeeDataSource datasource;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-        mDbHelper = new ZombieDBAdapter(this);
+        //to be deleted
+		mDbHelper = new ZombieDBAdapter(this);
         mDbHelper.open();
+        
+        //might need another datasource if i'm going to use 
+        //multiple tables
+        datasource = new ZomBeeDataSource(this);
+        datasource.open();
+        
         
 	}
 
