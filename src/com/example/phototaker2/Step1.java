@@ -30,8 +30,11 @@ import android.support.v4.app.NavUtils;
 public class Step1 extends Activity {
 	
 	public static final String LOGTAG="bees bees bees   ";
-	private Zombees currentZombee  = null;
+	//Zombees currentZombee  = new Zombees();
+	//null;
 	ZomBeeDataSource datasource;
+	 private ZombieDBAdapter mDbHelper;
+	
 	
 	
 	
@@ -40,7 +43,11 @@ public class Step1 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step1);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        datasource = new ZomBeeDataSource(this);
+        datasource.open();
         Log.i(LOGTAG,"WHAT");
+     // CreateData();
         
     }
 
@@ -61,13 +68,17 @@ public class Step1 extends Activity {
         return super.onOptionsItemSelected(item);
     }
     
-    public void sendFeedback(View button) {  
+    
+   
+   public void sendFeedback(View button) {  
         // Do click handling here  
     	Log.i(LOGTAG,"name is ");
+    	Zombees currentZombee  = new Zombees();
     	
     	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
     	String name = nameField.getText().toString();  
     	currentZombee.setTitle(name);
+    	Log.i(LOGTAG,"name is "+name);
     	
     	
     	final EditText emailField = (EditText) findViewById(R.id.EditTextEmail);  
@@ -83,12 +94,14 @@ public class Step1 extends Activity {
     	currentZombee.setMethod(feedbackType);
     	
     Log.i(LOGTAG,"CLose here");
-    	
+    //	mDbHelper.createNote(name,email);
 
-   		//currentZombee = datasource.create(currentZombee);
-   		//Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
+   	    currentZombee = datasource.create(currentZombee);
+   		
+   		Log.i(LOGTAG,"failed here");
+   		Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
 
-    	
+   
     } 
     
 	public void takePhoto(View view) {
@@ -100,7 +113,8 @@ public class Step1 extends Activity {
 		takePictureIntent.putExtra("output", uriSavedImage);
 		startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */
 		//currentZombee.setImage1(photoname);
-
+       
+		//CreateData();
 	}
 	
 	public void createCalender(View view){
@@ -117,10 +131,22 @@ public class Step1 extends Activity {
 		calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
 		     calDate.getTimeInMillis());
 		startActivity(calIntent);
+		
+		
 	}
 	
 	
-	
+	public void CreateData(){
+    	Log.i(LOGTAG,"in the dummy method");
+    	Zombees currentZombee  = new Zombees();
+    	currentZombee.setNumberofbees("2");
+    	currentZombee.setTitle("name");
+    	currentZombee.setDate1("date1");
+    	currentZombee.setNumberofbees("email");
+    	currentZombee.setMethod("feedbackType");
+    	currentZombee = datasource.create(currentZombee);
+    	Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
+	}
 	
 	
 	

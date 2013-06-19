@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import com.example.phototaker2.db.ZomBeeDataSource;
+import com.example.phototaker2.model.Zombees;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -36,20 +37,25 @@ public class MainActivity extends Activity {
 	
 	private ZombieDBAdapter mDbHelper;
 	ZomBeeDataSource datasource;
+	
+	public final static String LOGTAG = "Zombee Main Acitivuty";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		 //might need another datasource if i'm going to use 
+        //multiple tables
+        datasource = new ZomBeeDataSource(this);
+        datasource.open();
+        
+        CreateData();
 		
         //to be deleted
 		mDbHelper = new ZombieDBAdapter(this);
         mDbHelper.open();
         
-        //might need another datasource if i'm going to use 
-        //multiple tables
-        datasource = new ZomBeeDataSource(this);
-        datasource.open();
+       
         
         
 	}
@@ -143,6 +149,18 @@ public class MainActivity extends Activity {
 	public void startObservation(View view){
 		Intent intent = new Intent(this, ObservationActivity.class);
 		startActivity(intent);
+	}
+	
+	public void CreateData(){
+    	Log.i(LOGTAG,"in the dummy method");
+    	Zombees currentZombee  = new Zombees();
+    	currentZombee.setNumberofbees("2");
+    	currentZombee.setTitle("name");
+    	currentZombee.setDate1("date1");
+    	currentZombee.setNumberofbees("email");
+    	currentZombee.setMethod("feedbackType");
+    	currentZombee = datasource.create(currentZombee);
+    	Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
 	}
 
 }
