@@ -64,6 +64,7 @@ public class Step1 extends Activity {
     public void sendFeedback(View button) {  
         // Do click handling here  
     	Log.i(LOGTAG,"name is ");
+    	
     	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
     	String name = nameField.getText().toString();  
     	currentZombee.setTitle(name);
