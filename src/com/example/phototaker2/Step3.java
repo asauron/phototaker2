@@ -2,6 +2,7 @@ package com.example.phototaker2;
 
 import java.io.File;
 
+import com.example.phototaker2.db.ZomBeeDataSource;
 import com.example.phototaker2.model.Zombees;
 
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,14 +21,19 @@ import android.support.v4.app.NavUtils;
 
 public class Step3 extends Activity {
 
+	ZomBeeDataSource datasource;
+	public static final String LOGTAG="Step 3";
 	
-	
-	private Zombees currentZombee = null;
+
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step3);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        datasource = new ZomBeeDataSource(this);
+        datasource.open();
+        Log.i(LOGTAG,"WHAT 2");
     }
 
     @Override
@@ -48,7 +55,7 @@ public class Step3 extends Activity {
     
     public void sendFeedback(View button) {  
         // Do click handling here  
-    	
+    	Zombees currentZombee  = new Zombees();
     	final EditText nameField = (EditText) findViewById(R.id.EditTextName);  
     	String name = nameField.getText().toString();  
     	currentZombee.setFlies(name);
@@ -66,10 +73,20 @@ public class Step3 extends Activity {
     	boolean bRequiresResponse = responseCheckbox.isChecked(); 
     	
     	
+    	  Log.i(LOGTAG,"CLose here");
+  	    //	mDbHelper.createNote(name,email);
+
+  	   	    currentZombee = datasource.create(currentZombee);
+  	   		
+  	   		//Log.i(LOGTAG,"failed here");
+  	   		Log.i(LOGTAG,"STEP_3: Zombee created with id"+currentZombee.getId());
+    	
+    	
     } 
     
 	public void takePhoto(View view) {
 		// Take photo
+		Zombees currentZombee  = new Zombees();
 		File sdcard = Environment.getExternalStorageDirectory();
 		String photoname = sdcard.getAbsolutePath() + File.separator + "beesphoto3.png";
 		currentZombee.setImage3(photoname);

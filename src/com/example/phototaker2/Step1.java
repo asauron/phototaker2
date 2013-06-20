@@ -30,15 +30,10 @@ import android.support.v4.app.NavUtils;
 public class Step1 extends Activity {
 	
 	public static final String LOGTAG="bees bees bees   ";
-	//Zombees currentZombee  = new Zombees();
-	//null;
+	
 	ZomBeeDataSource datasource;
-	 private ZombieDBAdapter mDbHelper;
 	
-	
-	
-	
-    @Override
+ @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step1);
@@ -98,7 +93,7 @@ public class Step1 extends Activity {
 
    	    currentZombee = datasource.create(currentZombee);
    		
-   		Log.i(LOGTAG,"failed here");
+   		//Log.i(LOGTAG,"failed here");
    		Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
 
    
@@ -106,13 +101,14 @@ public class Step1 extends Activity {
     
 	public void takePhoto(View view) {
 		// Take photo
+		Zombees currentZombee  = new Zombees();
 		File sdcard = Environment.getExternalStorageDirectory();
 		String photoname = sdcard.getAbsolutePath() + File.separator + "beesphoto.png";
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		Uri uriSavedImage = Uri.fromFile(new File(photoname));
 		takePictureIntent.putExtra("output", uriSavedImage);
 		startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */
-		//currentZombee.setImage1(photoname);
+		currentZombee.setImage1(photoname);
        
 		//CreateData();
 	}
