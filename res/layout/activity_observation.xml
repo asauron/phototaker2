@@ -13,6 +13,7 @@
         android:layout_marginTop="27dp"
         android:onClick="createObservations"
         android:text="Create New Sample " />
+<<<<<<< HEAD
     <Button
             android:layout_width="169dp"
             android:layout_height="wrap_content"
@@ -21,5 +22,7 @@
             android:layout_alignLeft="@+id/button1" android:layout_alignParentTop="true"
             android:layout_marginTop="76dp" android:layout_alignRight="@+id/button1"/>
 
+=======
+>>>>>>> 9ebbcf2b72926436e597ae78600c6ed9d33acfa3
 
 </RelativeLayout>

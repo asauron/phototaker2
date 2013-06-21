@@ -30,6 +30,7 @@ public class ZomBeeDataSource {
 	}
 	
 	public Zombees create(Zombees zombee){
+		Log.i(LOGTAG, "Create got called");
 		ContentValues values = new ContentValues();
 		values.put(ZomBeeDBOpenHelper.COLUMN_NAME, zombee.getTitle());
 		values.put(ZomBeeDBOpenHelper.COLUMN_NUMBERBEES, zombee.getNumberofbees());
