@@ -14,15 +14,37 @@
         android:onClick="createObservations"
         android:text="Create New Sample " />
 <<<<<<< HEAD
-    <Button
-            android:layout_width="169dp"
-            android:layout_height="wrap_content"
-            android:text="Zombee Watch Tutorial"
-            android:id="@+id/button"
-            android:layout_alignLeft="@+id/button1" android:layout_alignParentTop="true"
-            android:layout_marginTop="76dp" android:layout_alignRight="@+id/button1"/>
+<<<<<<< HEAD
+=======
 
+   
+
+>>>>>>> parent of 0321db9... Hope this doesn't break what i already commited
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="24dp"
+        android:onClick="pendingObservations"
+        android:text="View Pending Samples" />
+
+<<<<<<< HEAD
 =======
 >>>>>>> 9ebbcf2b72926436e597ae78600c6ed9d33acfa3
+=======
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="20dp"
+        android:onClick="takeTutorial"
+        android:text="Continue Observations" />
+>>>>>>> parent of 0321db9... Hope this doesn't break what i already commited
 
 </RelativeLayout>

@@ -118,7 +118,7 @@ public class Step1 extends Activity {
 		calIntent.setType("vnd.android.cursor.item/event");
 
 		calIntent.putExtra(Events.TITLE, "Time to take the zombee picture!");
-		calIntent.putExtra(Events.DESCRIPTION, "Please mention the stage of the zombee bee development");
+		calIntent.putExtra(Events.DESCRIPTION, "Please mention the stage of the pupae development");
 		GregorianCalendar calDate = new GregorianCalendar();
 		calIntent.putExtra(Events.RRULE, "FREQ=WEEKLY;COUNT=11;WKST=SU;BYDAY=TU,TH");
 		calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
