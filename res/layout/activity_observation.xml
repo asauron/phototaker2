@@ -13,13 +13,7 @@
         android:layout_marginTop="27dp"
         android:onClick="createObservations"
         android:text="Create New Sample " />
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
-   
-
->>>>>>> parent of 0321db9... Hope this doesn't break what i already commited
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -31,10 +25,6 @@
         android:onClick="pendingObservations"
         android:text="View Pending Samples" />
 
-<<<<<<< HEAD
-=======
->>>>>>> 9ebbcf2b72926436e597ae78600c6ed9d33acfa3
-=======
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
@@ -45,6 +35,6 @@
         android:layout_marginTop="20dp"
         android:onClick="takeTutorial"
         android:text="Continue Observations" />
->>>>>>> parent of 0321db9... Hope this doesn't break what i already commited
+
 
 </RelativeLayout>
