@@ -88,10 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
-<<<<<<< HEAD
 
-=======
->>>>>>> 9ebbcf2b72926436e597ae78600c6ed9d33acfa3
             </LinearLayout>
 
         </TableRow>
