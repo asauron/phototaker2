@@ -15,6 +15,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import com.example.phototaker2.db.ZomBeeDataSource;
 import com.example.phototaker2.model.Zombees;
@@ -49,13 +50,17 @@ public class MainActivity extends Activity {
         datasource = new ZomBeeDataSource(this);
         datasource.open();
         
-        CreateData();
+       // CreateData();
 		
         //to be deleted
 		mDbHelper = new ZombieDBAdapter(this);
         mDbHelper.open();
         
-       
+       List<Zombees> zombees = datasource.findAll();
+//       if(condition){
+//    	   
+//       }
+//       
         
         
 	}

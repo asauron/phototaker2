@@ -187,6 +187,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.phototaker2.MainActivity" />
         </activity>
+        <activity
+            android:name=".DisplayDatabase"
+            android:label="@string/title_activity_display_database" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.phototaker2.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

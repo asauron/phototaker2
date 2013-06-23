@@ -49,5 +49,6 @@
     <string name="edit_note">EditNote</string>
     <string name="menu_delete">NoteEdit_Delete</string>
     <string name="title_activity_pending_observation">Pending Observations</string>
+    <string name="title_activity_display_database">Steps to complete</string>
 
 </resources>

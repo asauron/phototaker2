@@ -1,19 +1,43 @@
 package com.example.phototaker2.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.phototaker2.model.Zombees;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class ZomBeeDataSource {
 
-   public static final String LOGTAG="Zombee Watch";
+   public static final String LOGTAG="Zombee Watch data source method";
 	
 	SQLiteOpenHelper dbhelper;
 	SQLiteDatabase database;
+	
+	private static final String[] allColumns = {
+		ZomBeeDBOpenHelper.COLUMN_DATE1,
+		ZomBeeDBOpenHelper.COLUMN_DATE2,
+		ZomBeeDBOpenHelper.COLUMN_DATE3,
+		ZomBeeDBOpenHelper.COLUMN_IMAGE1,
+		ZomBeeDBOpenHelper.COLUMN_IMAGE2,
+		ZomBeeDBOpenHelper.COLUMN_IMAGE3,
+		ZomBeeDBOpenHelper.COLUMN_ID,
+		ZomBeeDBOpenHelper.COLUMN_LATTITUDE,
+		ZomBeeDBOpenHelper.COLUMN_LONGITUDE,
+		ZomBeeDBOpenHelper.COLUMN_METHOD,
+		ZomBeeDBOpenHelper.COLUMN_NAME,
+		ZomBeeDBOpenHelper.COLUMN_NOTES1,
+		ZomBeeDBOpenHelper.COLUMN_NOTES2,
+		ZomBeeDBOpenHelper.COLUMN_NOTES3,
+		ZomBeeDBOpenHelper.COLUMN_NUMBERBEES,
+		ZomBeeDBOpenHelper.COLUMN_PUPAE,
+		ZomBeeDBOpenHelper.COLUMN_FLIES
+		};
 	
 	public ZomBeeDataSource(Context context){
 		dbhelper = new ZomBeeDBOpenHelper(context);
@@ -52,6 +76,27 @@ public class ZomBeeDataSource {
 		zombee.setId(insertid);
 		return zombee;
 		
+	}
+	
+	public List<Zombees> findAll() {
+		List<Zombees> zombees = new ArrayList<Zombees>();
+		
+		Cursor cursor = database.query(ZomBeeDBOpenHelper.TABLE_Zombees, allColumns, 
+				null, null, null, null, null);
+		
+		Log.i(LOGTAG, "Returned " + cursor.getCount() + " rows");
+		if (cursor.getCount() > 0) {
+			while (cursor.moveToNext()) {
+				Zombees zombee = new Zombees();
+				zombee.setId(cursor.getLong(cursor.getColumnIndex(ZomBeeDBOpenHelper.COLUMN_ID)));
+				zombee.setTitle(cursor.getString(cursor.getColumnIndex(ZomBeeDBOpenHelper.COLUMN_NAME)));
+				zombee.setNumberofbees(cursor.getString(cursor.getColumnIndex(ZomBeeDBOpenHelper.COLUMN_NUMBERBEES)));
+				zombee.setImage1(cursor.getString(cursor.getColumnIndex(ZomBeeDBOpenHelper.COLUMN_IMAGE1)));
+				zombee.setNotes1(cursor.getString(cursor.getColumnIndex(ZomBeeDBOpenHelper.COLUMN_NOTES1)));
+				zombees.add(zombee);
+			}
+		}
+		return zombees;		
 	}
 	
 }
