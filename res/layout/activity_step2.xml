@@ -40,12 +40,7 @@
     android:layout_width="fill_parent">  
 </EditText>
 
-<CheckBox  
-    android:id="@+id/CheckBoxResponse"  
-    android:layout_height="wrap_content"  
-    android:text="Save Observation"  
-    android:layout_width="fill_parent">  
-</CheckBox>
+
 
  <Button
                     android:layout_width="match_parent"

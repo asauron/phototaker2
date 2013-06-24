@@ -7,6 +7,9 @@ import java.util.GregorianCalendar;
 import com.example.phototaker2.db.ZomBeeDataSource;
 import com.example.phototaker2.model.Zombees;
 
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ import android.provider.CalendarContract.Events;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.text.format.DateFormat;
 import android.text.format.Time;
@@ -34,11 +38,16 @@ import android.support.v4.app.NavUtils;
 
 
 
-public class Step1 extends Activity {
+public class Step1 extends Activity implements LocationListener {
 	
 	public static final String LOGTAG="bees bees bees   ";
 	private static final int MY_DATE_DIALOG_ID = 0;
-	 private Date mCurrentTime;
+
+	  private TextView latituteField;
+	  private TextView longitudeField;
+	  private LocationManager locationManager;
+	  private String provider;
+	  
 	
 	ZomBeeDataSource datasource;
 	
@@ -52,6 +61,26 @@ public class Step1 extends Activity {
         datasource.open();
         Log.i(LOGTAG,"WHAT");
      // CreateData();
+        
+        latituteField = (TextView) findViewById(R.id.TextView02);
+	    longitudeField = (TextView) findViewById(R.id.TextView04);
+
+	    // Get the location manager
+	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+	    // Define the criteria how to select the location provider -> use
+	    // default
+	    Criteria criteria = new Criteria();
+	    provider = locationManager.getBestProvider(criteria, false);
+	    Location location = locationManager.getLastKnownLocation(provider);
+
+	    // Initialize the location fields
+	    if (location != null) {
+	      System.out.println("Provider " + provider + " has been selected.");
+	      onLocationChanged(location);
+	    } else {
+	      latituteField.setText("Location not available");
+	      longitudeField.setText("Location not available");
+	    }
         
     }
 
@@ -110,6 +139,9 @@ public class Step1 extends Activity {
     
 	public void takePhoto(View view) {
 		// Take photo
+		
+		 latituteField = (TextView) findViewById(R.id.TextView02);
+		    longitudeField = (TextView) findViewById(R.id.TextView04);
 		Zombees currentZombee  = new Zombees();
 		File sdcard = Environment.getExternalStorageDirectory();
 		String photoname = sdcard.getAbsolutePath() + File.separator + "beesphoto.png";
@@ -183,7 +215,42 @@ public class Step1 extends Activity {
 	
 	
 	
-	
+	  /* Request updates at startup */
+	  @Override
+	  protected void onResume() {
+	    super.onResume();
+	    locationManager.requestLocationUpdates(provider, 400, 1, this);
+	  }
+
+	  /* Remove the location listener updates when Activity is paused */
+	  @Override
+	  protected void onPause() {
+	    super.onPause();
+	    locationManager.removeUpdates(this);
+	  }
+	  
+	  public void onLocationChanged(Location location) {
+	    int lat = (int) (location.getLatitude());
+	    int lng = (int) (location.getLongitude());
+	    latituteField.setText(String.valueOf(lat));
+	    longitudeField.setText(String.valueOf(lng));
+	  }
+
+	  public void onStatusChanged(String provider, int status, Bundle extras) {
+	    // TODO Auto-generated method stub
+
+	  }
+
+	  public void onProviderEnabled(String provider) {
+	    Toast.makeText(this, "Enabled new provider " + provider,
+	        Toast.LENGTH_SHORT).show();
+
+	  }
+
+	  public void onProviderDisabled(String provider) {
+	    Toast.makeText(this, "Disabled provider " + provider,
+	        Toast.LENGTH_SHORT).show();
+	  }
 	
     
 	
