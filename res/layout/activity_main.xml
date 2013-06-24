@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
    
     android:orientation="vertical" >
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+   
 
         <TableRow
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:padding="5dip" >
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+           
 
                 <Button
                     android:layout_width="143dp"
@@ -27,49 +22,46 @@
                     android:onClick="takeTutorial"
                     android:text="About ZomBeeWatch" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+               
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+              
 
                         <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="63dp"
+                            android:layout_width="143dp"
+                            android:layout_height="wrap_content"
                             android:onClick="takeTutorial"
                             android:text="ZombeeWatch Tutorial" />
 
-                    </LinearLayout>
+                  
 
-                </LinearLayout>
+               
 
-                
+                     </TableRow>
+                     
+                     
+		<TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+ 
+               
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                   
 
-                    <TableRow
-                        android:id="@+id/tableRow5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
+                    
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical" >
-                        </LinearLayout>
+                        <Button
+                            android:layout_width="136dp"
+                            android:layout_height="63dp"
+                            android:onClick="sendEmail"
+                            android:text="Contact Us" />
 
-                    </TableRow>
+             
 
-                </LinearLayout>
+          
 
-            </LinearLayout>
+   
 
             <Button
                 android:layout_width="match_parent"
@@ -77,59 +69,11 @@
                 android:onClick="startObservation"
                 android:text="Observations" />
 
-        </TableRow>
+    </TableRow>
 
-   <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+  
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="61dp"
-                    android:onClick="activityCycle"
-                    android:background="@android:color/transparent"
-                    android:textColor="#FF0000"
-                    android:text="@string/activity_cycle" />
-            </LinearLayout>
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:layout_width="136dp"
-                android:layout_height="63dp"
-                android:onClick="sendEmail"
-                android:background="@android:color/transparent"
-                android:textColor="#FF0000"
-                android:text="@string/send_email" />
+       
 
 
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-           <Button
-                android:layout_width="136dp"
-                android:layout_height="63dp"
-                android:onClick="sayMessage"
-                android:background="@android:color/transparent"
-                android:textColor="#FF0000"
-                android:text="@string/hello_database" />
-
-        </TableRow>
-    </TableLayout>
-
-</LinearLayout>
+</TableLayout>

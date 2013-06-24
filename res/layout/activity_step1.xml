@@ -111,6 +111,12 @@
                     android:layout_height="63dp"
                     android:onClick="takePhoto"
                     android:text="@string/button_photo" />
+ 
+ <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp"
+                    android:onClick="onDateDialogButtonClick"
+                    android:text="Select today's date" />
 
 
                       <Button

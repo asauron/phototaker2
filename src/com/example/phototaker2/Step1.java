@@ -1,6 +1,7 @@
 package com.example.phototaker2;
 
 import java.io.File;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import com.example.phototaker2.db.ZomBeeDataSource;
@@ -14,15 +15,21 @@ import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.provider.CalendarContract.Events;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.text.format.DateFormat;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
 
@@ -30,6 +37,8 @@ import android.support.v4.app.NavUtils;
 public class Step1 extends Activity {
 	
 	public static final String LOGTAG="bees bees bees   ";
+	private static final int MY_DATE_DIALOG_ID = 0;
+	 private Date mCurrentTime;
 	
 	ZomBeeDataSource datasource;
 	
@@ -131,18 +140,48 @@ public class Step1 extends Activity {
 		
 	}
 	
-	
-	public void CreateData(){
-    	Log.i(LOGTAG,"in the dummy method");
-    	Zombees currentZombee  = new Zombees();
-    	currentZombee.setNumberofbees("2");
-    	currentZombee.setTitle("name");
-    	currentZombee.setDate1("date1");
-    	currentZombee.setNumberofbees("email");
-    	currentZombee.setMethod("feedbackType");
-    	currentZombee = datasource.create(currentZombee);
-    	Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
+	public void onDateDialogButtonClick(View v) {
+	     showDialog(MY_DATE_DIALOG_ID);
 	}
+
+	protected Dialog onCreateDialog(int id) {
+		switch(id) {
+		case MY_DATE_DIALOG_ID:
+		 DatePickerDialog dateDlg = new DatePickerDialog(this,
+		         new DatePickerDialog.OnDateSetListener() {
+		         public void onDateSet(DatePicker view, int year,
+		                                             int monthOfYear, int dayOfMonth)
+		         {
+		                    Time chosenDate = new Time();
+		                    chosenDate.set(dayOfMonth, monthOfYear, year);
+		                    long dtDob = chosenDate.toMillis(true);
+		                    CharSequence strDate = DateFormat.format("MMMM dd, yyyy", dtDob);
+		                    Log.i(LOGTAG,"date will be saved as"+ strDate.toString());
+		      		      
+		                    Toast.makeText(Step1.this,
+		                         "Date picked: " + strDate, Toast.LENGTH_SHORT).show();
+		        }}, 2011,0, 1);
+		      dateDlg.setMessage("Enter today's date");
+		    
+		      return dateDlg;
+		}
+		return null;
+	}
+	
+	
+//	public void CreateData(){
+//    	Log.i(LOGTAG,"in the dummy method");
+//    	Zombees currentZombee  = new Zombees();
+//    	currentZombee.setNumberofbees("2");
+//    	currentZombee.setTitle("name");
+//    	currentZombee.setDate1("date1");
+//    	currentZombee.setNumberofbees("email");
+//    	currentZombee.setMethod("feedbackType");
+//    	currentZombee = datasource.create(currentZombee);
+//    	Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
+//	}
+	
+	
 	
 	
 	

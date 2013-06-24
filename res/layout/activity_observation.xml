@@ -18,23 +18,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="24dp"
-        android:onClick="pendingObservations"
-        android:text="View Pending Samples" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/button1"
-        android:layout_marginTop="20dp"
-        android:onClick="takeTutorial"
-        android:text="Continue Observations" />
-
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="18dp"
+        android:text="view database" />
 
 </RelativeLayout>
