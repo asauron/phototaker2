@@ -10,20 +10,27 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.text.format.DateFormat;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 
 public class Step2 extends Activity {
 
 	ZomBeeDataSource datasource;
 	public static final String LOGTAG="Step 2";
+	private static final int MY_DATE_DIALOG_ID = 0;
 	
 	
 	@Override
@@ -98,6 +105,34 @@ public class Step2 extends Activity {
 		startActivityForResult(takePictureIntent, RESULT_OK); /* What is RESULT_OK */
 		
 
+	}
+	
+	public void onDateDialogButtonClick(View v) {
+	     showDialog(MY_DATE_DIALOG_ID);
+	}
+
+	protected Dialog onCreateDialog(int id) {
+		switch(id) {
+		case MY_DATE_DIALOG_ID:
+		 DatePickerDialog dateDlg = new DatePickerDialog(this,
+		         new DatePickerDialog.OnDateSetListener() {
+		         public void onDateSet(DatePicker view, int year,
+		                                             int monthOfYear, int dayOfMonth)
+		         {
+		                    Time chosenDate = new Time();
+		                    chosenDate.set(dayOfMonth, monthOfYear, year);
+		                    long dtDob = chosenDate.toMillis(true);
+		                    CharSequence strDate = DateFormat.format("MMMM dd, yyyy", dtDob);
+		                    Log.i(LOGTAG,"date will be saved as"+ strDate.toString());
+		      		      
+		                    Toast.makeText(Step2.this,
+		                         "Date picked: " + strDate, Toast.LENGTH_SHORT).show();
+		        }}, 2011,0, 1);
+		      dateDlg.setMessage("Enter today's date");
+		    
+		      return dateDlg;
+		}
+		return null;
 	}
 
 }

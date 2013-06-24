@@ -62,7 +62,15 @@
     android:text="Save Observation"  
     android:onClick="sendFeedback"  
     android:layout_width="fill_parent">  
+    
 </Button> 
+
+                      
+                       <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp"
+                    android:onClick="onDateDialogButtonClick"
+                    android:text="Select today's date" />
 
                       <Button  
     android:id="@+id/ButtonSendFeedback"  
