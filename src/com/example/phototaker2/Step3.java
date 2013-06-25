@@ -75,11 +75,7 @@ public class Step3 extends Activity {
     	String feedback = feedbackField.getText().toString();
     	currentZombee.setNotes3(feedback);
     	
-    	//final Spinner feedbackSpinner = (Spinner) findViewById(R.id.SpinnerFeedbackType);  
-    	//String feedbackType = feedbackSpinner.getSelectedItem().toString();
     	
-    	final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
-    	boolean bRequiresResponse = responseCheckbox.isChecked(); 
     	
     	
     	  Log.i(LOGTAG,"CLose here");

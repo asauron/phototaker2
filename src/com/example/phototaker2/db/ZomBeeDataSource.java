@@ -145,6 +145,57 @@ public class ZomBeeDataSource {
 
 	    }
 
+	    
+	    public Cursor fetchAllNotesStep2() {
+
+	        return database.query(ZomBeeDBOpenHelper.TABLE_Zombees_Step2, allColumnsStep2 , null, null, null, null, null);
+	    }
+		
+		 public boolean deleteStep2Row(long rowId) {
+
+		        return database.delete(ZomBeeDBOpenHelper.TABLE_Zombees_Step2, ZomBeeDBOpenHelper.COLUMN_ID + "=" + rowId, null) > 0;
+		    }
+
+		   
+
+		    public Cursor fetchStep2Note(long rowId) throws SQLException {
+
+		        Cursor mCursor =
+
+		            database.query(true, ZomBeeDBOpenHelper.TABLE_Zombees_Step2, allColumnsStep2 , ZomBeeDBOpenHelper.COLUMN_ID + "=" + rowId, null,
+		                    null, null, null, null);
+		        if (mCursor != null) {
+		            mCursor.moveToFirst();
+		        }
+		        return mCursor;
+
+		    }
+		    
+		    public Cursor fetchAllNotesStep3() {
+
+		        return database.query(ZomBeeDBOpenHelper.TABLE_Zombees_Step3, allColumnsStep3 , null, null, null, null, null);
+		    }
+			
+			 public boolean deleteStep3Row(long rowId) {
+
+			        return database.delete(ZomBeeDBOpenHelper.TABLE_Zombees_Step3, ZomBeeDBOpenHelper.COLUMN_ID + "=" + rowId, null) > 0;
+			    }
+
+			   
+
+			    public Cursor fetchStep3Note(long rowId) throws SQLException {
+
+			        Cursor mCursor =
+
+			            database.query(true, ZomBeeDBOpenHelper.TABLE_Zombees_Step3, allColumnsStep3 , ZomBeeDBOpenHelper.COLUMN_ID + "=" + rowId, null,
+			                    null, null, null, null);
+			        if (mCursor != null) {
+			            mCursor.moveToFirst();
+			        }
+			        return mCursor;
+
+			    }
+
 //	    public boolean updateStep1Note(long rowId, String title, String body) {
 //	        ContentValues args = new ContentValues();
 //	        args.put(KEY_TITLE, title);
