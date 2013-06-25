@@ -31,6 +31,7 @@ public class Step2 extends Activity {
 	ZomBeeDataSource datasource;
 	public static final String LOGTAG="Step 2";
 	private static final int MY_DATE_DIALOG_ID = 0;
+	Zombees currentZombee  = new Zombees();
 	
 	
 	@Override
@@ -69,23 +70,18 @@ public class Step2 extends Activity {
     	currentZombee.setPupae(name);
     	
     	
-    	//final EditText emailField = (EditText) findViewById(R.id.EditTextEmail);  
-    	//String email = emailField.getText().toString();  
+    
     	final EditText feedbackField = (EditText) findViewById(R.id.EditTextFeedbackBody);  
     	String feedback = feedbackField.getText().toString();
     	currentZombee.setNotes2(feedback);
     	
-    	//final Spinner feedbackSpinner = (Spinner) findViewById(R.id.SpinnerFeedbackType);  
-    	//String feedbackType = feedbackSpinner.getSelectedItem().toString();
     	
-    	final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.CheckBoxResponse);  
-    	boolean bRequiresResponse = responseCheckbox.isChecked(); 
     	
     	
     	  Log.i(LOGTAG,"CLose here");
     	    //	mDbHelper.createNote(name,email);
 
-    	   	    currentZombee = datasource.create(currentZombee);
+    	   	    currentZombee = datasource.createStep2(currentZombee);
     	   		
     	   		//Log.i(LOGTAG,"failed here");
     	   		Log.i(LOGTAG,"STEP_2: Zombee created with id"+currentZombee.getId());
@@ -124,7 +120,7 @@ public class Step2 extends Activity {
 		                    long dtDob = chosenDate.toMillis(true);
 		                    CharSequence strDate = DateFormat.format("MMMM dd, yyyy", dtDob);
 		                    Log.i(LOGTAG,"date will be saved as"+ strDate.toString());
-		      		      
+		                    currentZombee.setDate2(strDate.toString());
 		                    Toast.makeText(Step2.this,
 		                         "Date picked: " + strDate, Toast.LENGTH_SHORT).show();
 		        }}, 2011,0, 1);

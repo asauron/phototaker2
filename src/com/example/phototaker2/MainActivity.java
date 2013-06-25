@@ -31,6 +31,7 @@ import android.provider.CalendarContract.Events;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 public class MainActivity extends Activity {
 
@@ -52,17 +53,17 @@ public class MainActivity extends Activity {
         
        // CreateData();
 		
-        //to be deleted
-		mDbHelper = new ZombieDBAdapter(this);
-        mDbHelper.open();
+       
         
-       List<Zombees> zombees = datasource.findAll();
+    //   List<Zombees> zombees = datasource.findAll();
 //       if(condition){
 //    	   
 //       }
 //       
         
-        
+//   	ArrayAdapter<Zombees> adapter = new ArrayAdapter<Zombees>(this, 
+//			android.R.layout.simple_list_item_1, zombees);
+	//setListAdapter(adapter);
 	}
 
 	private File getDir() {
@@ -156,16 +157,16 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	public void CreateData(){
-    	Log.i(LOGTAG,"in the dummy method");
-    	Zombees currentZombee  = new Zombees();
-    	currentZombee.setNumberofbees("2");
-    	currentZombee.setTitle("name");
-    	currentZombee.setDate1("date1");
-    	currentZombee.setNumberofbees("email");
-    	currentZombee.setMethod("feedbackType");
-    	currentZombee = datasource.create(currentZombee);
-    	Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
-	}
+//	public void CreateData(){
+//    	Log.i(LOGTAG,"in the dummy method");
+//    	Zombees currentZombee  = new Zombees();
+//    	currentZombee.setNumberofbees("2");
+//    	currentZombee.setTitle("name");
+//    	currentZombee.setDate1("date1");
+//    	currentZombee.setNumberofbees("email");
+//    	currentZombee.setMethod("feedbackType");
+//    	currentZombee = datasource.createStep1(currentZombee);
+//    	Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
+//	}
 
 }

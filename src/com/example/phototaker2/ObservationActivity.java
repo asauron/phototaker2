@@ -27,7 +27,7 @@ public class ObservationActivity extends Activity {
 	}
     
     public void pendingObservations(View view){
-		Intent intent = new Intent(this, PendingObservation.class);
+		Intent intent = new Intent(this,DisplayDatabase.class);
 		startActivity(intent);
 	}
     

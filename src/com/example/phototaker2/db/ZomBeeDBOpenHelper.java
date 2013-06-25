@@ -12,48 +12,69 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 	private static final String LOGTAG = "ZomBee Watch is here";
 
 	private static final String DATABASE_NAME = "ZomBeeWatch.db";
-	private static final int DATABASE_VERSION = 1;
+	//updated database version after adding multiple tables to the db
+	private static final int DATABASE_VERSION = 2; 
 	
-	public static final String TABLE_Zombees = "Zombees";
+	public static final String TABLE_Zombees_Step1 = "Zombees1";
 	public static final String COLUMN_ID = "Id";
-	public static final String COLUMN_NAME = "title";
+	public static final String COLUMN_NAME = "title"; //sample name
 	public static final String COLUMN_NUMBERBEES = "numberofbees";
 	public static final String COLUMN_METHOD = "method";
 	public static final String COLUMN_IMAGE1 = "image1";
-	public static final String COLUMN_IMAGE2 = "image2";
-	public static final String COLUMN_IMAGE3 = "image3";
 	public static final String COLUMN_NOTES1 = "notes1";
-	public static final String COLUMN_NOTES2 = "notes2";
-	public static final String COLUMN_NOTES3 = "notes3";
 	public static final String COLUMN_LATTITUDE = "lattitude";
 	public static final String COLUMN_LONGITUDE = "longitude";
-	public static final String COLUMN_PUPAE = "pupae";
-	public static final String COLUMN_FLIES = "flies";
 	public static final String COLUMN_DATE1 = "date1";
+	
+	public static final String TABLE_Zombees_Step2 = "Zombees2";
+	//not sure if i need this
+	//public static final String COLUMN_STEP2_ID = "Id";
+	public static final String COLUMN_IMAGE2 = "image2";
+    public static final String COLUMN_NOTES2 = "notes2";
+	public static final String COLUMN_PUPAE = "pupae";
 	public static final String COLUMN_DATE2 = "date2";
-	public static final String COLUMN_DATE3 = "date3";
+	
+	public static final String TABLE_Zombees_Step3 = "Zombees3";
+	//not sure if i need this
+	//public static final String COLUMN_STEP3_ID = "Id";
+	public static final String COLUMN_IMAGE3 = "image3";
+	public static final String COLUMN_NOTES3 = "notes3";
+	public static final String COLUMN_FLIES = "flies";
+    public static final String COLUMN_DATE3 = "date3";
 	
 	
-	private static final String TABLE_CREATE = 
-			"CREATE TABLE " + TABLE_Zombees + " (" +
+	private static final String TABLE_CREATE_STEP1 = 
+			"CREATE TABLE " + TABLE_Zombees_Step1 + " (" +
 			COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 			COLUMN_NAME + " TEXT, " +
 			COLUMN_NUMBERBEES + " NUMERIC, " +
 			COLUMN_METHOD + " TEXT, " +
 			COLUMN_IMAGE1 + " TEXT, " +
-			COLUMN_IMAGE2 + " TEXT, " +
-			COLUMN_IMAGE3 + " TEXT, " +
 			COLUMN_NOTES1 + " TEXT, " +
-			COLUMN_NOTES2 + " TEXT, " +
-			COLUMN_NOTES3 + " TEXT, " +
-			COLUMN_LATTITUDE + " NUMERIC, " +
+		    COLUMN_LATTITUDE + " NUMERIC, " +
 			COLUMN_LONGITUDE + " NUMERIC, " +
-			COLUMN_PUPAE + " NUMERIC, " +
-			COLUMN_FLIES + " NUMERIC, " +
-			COLUMN_DATE1 + " TEXT, " +
-			COLUMN_DATE2 + " TEXT, " +
-			COLUMN_DATE3 + " TEXT " +
+		    COLUMN_DATE1 + " TEXT, " +
+			
 			")";
+	
+	
+	private static final String TABLE_CREATE_STEP2 = 
+			"CREATE TABLE " + TABLE_Zombees_Step2 + " (" +
+					COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+					COLUMN_IMAGE2 + " TEXT, " +
+			        COLUMN_NOTES2 + " TEXT, " +
+				    COLUMN_PUPAE + " NUMERIC, " +
+				    COLUMN_DATE2 + " TEXT, " +
+				    ")";
+	
+	private static final String TABLE_CREATE_STEP3 = 
+			"CREATE TABLE " + TABLE_Zombees_Step3 + " (" +
+					COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+					COLUMN_IMAGE3 + " TEXT, " +
+			        COLUMN_NOTES3 + " TEXT, " +
+				    COLUMN_FLIES + " NUMERIC, " +
+				    COLUMN_DATE3 + " TEXT, " +
+				    ")";
 	
 	
 	public ZomBeeDBOpenHelper(Context context) {
@@ -64,18 +85,26 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		
-		db.execSQL(TABLE_CREATE);
-		Log.i(LOGTAG,"Table has been created");
-		
+		db.execSQL(TABLE_CREATE_STEP1);
+		Log.i(LOGTAG,"Table1 has been created");
+		db.execSQL(TABLE_CREATE_STEP2);
+		Log.i(LOGTAG,"Table2 has been created");
+		db.execSQL(TABLE_CREATE_STEP3);
+		Log.i(LOGTAG,"Table3 has been created");
 
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-		db.execSQL("DROP TABLE IF EXISTS" + TABLE_Zombees);
+		Log.i(LOGTAG, "in on upgrade method ");
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Zombees_Step1);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Zombees_Step2);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Zombees_Step3);
 		onCreate(db);
 		
+		
+		Log.i(LOGTAG, "database has been upgraded from " +oldVersion + "to" + newVersion);
 	}
 
 }

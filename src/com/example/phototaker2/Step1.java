@@ -50,6 +50,7 @@ public class Step1 extends Activity implements LocationListener {
 	  
 	
 	ZomBeeDataSource datasource;
+	Zombees currentZombee  = new Zombees();
 	
  @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -129,7 +130,7 @@ public class Step1 extends Activity implements LocationListener {
     Log.i(LOGTAG,"CLose here");
     //	mDbHelper.createNote(name,email);
 
-   	    currentZombee = datasource.create(currentZombee);
+   	    currentZombee = datasource.createStep1(currentZombee);
    		
    		//Log.i(LOGTAG,"failed here");
    		Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
@@ -189,7 +190,7 @@ public class Step1 extends Activity implements LocationListener {
 		                    long dtDob = chosenDate.toMillis(true);
 		                    CharSequence strDate = DateFormat.format("MMMM dd, yyyy", dtDob);
 		                    Log.i(LOGTAG,"date will be saved as"+ strDate.toString());
-		      		      
+		                    currentZombee.setDate1(strDate.toString());
 		                    Toast.makeText(Step1.this,
 		                         "Date picked: " + strDate, Toast.LENGTH_SHORT).show();
 		        }}, 2011,0, 1);

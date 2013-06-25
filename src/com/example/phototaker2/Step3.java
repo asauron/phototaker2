@@ -31,6 +31,8 @@ public class Step3 extends Activity {
 	public static final String LOGTAG="Step 3";
 	private static final int MY_DATE_DIALOG_ID = 0;
 	
+	Zombees currentZombee  = new Zombees();
+	
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,7 +85,7 @@ public class Step3 extends Activity {
     	  Log.i(LOGTAG,"CLose here");
   	    //	mDbHelper.createNote(name,email);
 
-  	   	    currentZombee = datasource.create(currentZombee);
+  	   	    currentZombee = datasource.createStep1(currentZombee);
   	   		
   	   		//Log.i(LOGTAG,"failed here");
   	   		Log.i(LOGTAG,"STEP_3: Zombee created with id"+currentZombee.getId());
@@ -122,7 +124,7 @@ public class Step3 extends Activity {
 		                    long dtDob = chosenDate.toMillis(true);
 		                    CharSequence strDate = DateFormat.format("MMMM dd, yyyy", dtDob);
 		                    Log.i(LOGTAG,"date will be saved as"+ strDate.toString());
-		      		      
+		                    currentZombee.setDate3(strDate.toString());
 		                    Toast.makeText(Step3.this,
 		                         "Date picked: " + strDate, Toast.LENGTH_SHORT).show();
 		        }}, 2011,0, 1);
