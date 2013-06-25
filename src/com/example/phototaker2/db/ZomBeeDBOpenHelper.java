@@ -53,8 +53,7 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 			COLUMN_NOTES1 + " TEXT, " +
 		    COLUMN_LATTITUDE + " NUMERIC, " +
 			COLUMN_LONGITUDE + " NUMERIC, " +
-		    COLUMN_DATE1 + " TEXT, " +
-			
+		    COLUMN_DATE1 + " TEXT " +
 			")";
 	
 	
@@ -64,7 +63,7 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 					COLUMN_IMAGE2 + " TEXT, " +
 			        COLUMN_NOTES2 + " TEXT, " +
 				    COLUMN_PUPAE + " NUMERIC, " +
-				    COLUMN_DATE2 + " TEXT, " +
+				    COLUMN_DATE2 + " TEXT " +
 				    ")";
 	
 	private static final String TABLE_CREATE_STEP3 = 
@@ -73,7 +72,7 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 					COLUMN_IMAGE3 + " TEXT, " +
 			        COLUMN_NOTES3 + " TEXT, " +
 				    COLUMN_FLIES + " NUMERIC, " +
-				    COLUMN_DATE3 + " TEXT, " +
+				    COLUMN_DATE3 + " TEXT " +
 				    ")";
 	
 	
@@ -84,7 +83,7 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		
+		Log.i(LOGTAG,"in on create method");
 		db.execSQL(TABLE_CREATE_STEP1);
 		Log.i(LOGTAG,"Table1 has been created");
 		db.execSQL(TABLE_CREATE_STEP2);
@@ -99,8 +98,11 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 		Log.i(LOGTAG, "in on upgrade method ");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Zombees_Step1);
+		Log.i(LOGTAG,"After step 1");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Zombees_Step2);
+		Log.i(LOGTAG,"After step 2");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Zombees_Step3);
+		Log.i(LOGTAG,"After step 3");
 		onCreate(db);
 		
 		

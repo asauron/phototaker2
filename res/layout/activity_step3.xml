@@ -40,12 +40,7 @@
     android:layout_width="fill_parent">  
 </EditText>
 
-<CheckBox  
-    android:id="@+id/CheckBoxResponse"  
-    android:layout_height="wrap_content"  
-    android:text="Save Observation"  
-    android:layout_width="fill_parent">  
-</CheckBox>
+
 
  <Button
                     android:layout_width="match_parent"
@@ -53,8 +48,11 @@
                     android:onClick="takePhoto"
                     android:text="@string/button_photo" />
 
-
-                    
+ <Button
+     android:layout_width="match_parent"
+     android:layout_height="63dp"
+     android:onClick="onDateDialogButtonClick"
+     android:text="Select today&apos;s date" />
                       
                       <Button  
     android:id="@+id/ButtonSendFeedback"  
@@ -63,14 +61,7 @@
     android:onClick="sendFeedback"  
     android:layout_width="fill_parent">  
     
-</Button> 
-
-                      
-                       <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="63dp"
-                    android:onClick="onDateDialogButtonClick"
-                    android:text="Select today's date" />
+</Button>
 
                       <Button  
     android:id="@+id/ButtonSendFeedback"  

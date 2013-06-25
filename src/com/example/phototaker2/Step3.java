@@ -85,7 +85,7 @@ public class Step3 extends Activity {
     	  Log.i(LOGTAG,"CLose here");
   	    //	mDbHelper.createNote(name,email);
 
-  	   	    currentZombee = datasource.createStep1(currentZombee);
+  	   	    currentZombee = datasource.createStep3(currentZombee);
   	   		
   	   		//Log.i(LOGTAG,"failed here");
   	   		Log.i(LOGTAG,"STEP_3: Zombee created with id"+currentZombee.getId());
