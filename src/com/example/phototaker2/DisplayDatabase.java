@@ -13,6 +13,7 @@ import android.app.ListActivity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,8 @@ public class DisplayDatabase extends Activity {
     private EditText flies;
     private ZomBeeDBOpenHelper mDbHelper;
     private Long mRowId;
+    
+    private static final String LOGTAG = "display database";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,13 +81,17 @@ public class DisplayDatabase extends Activity {
 
     @SuppressWarnings("deprecation")
 	private void populateFields() {
+    	int sampleno = 3;
+    	 mRowId = (long)sampleno;
         if (mRowId != null) {
             Cursor note = datasource.fetchStep1Note(mRowId);
             startManagingCursor(note);
             beesnumber.setText(note.getString(
                     note.getColumnIndexOrThrow(mDbHelper.COLUMN_NUMBERBEES)));
+            Log.i(LOGTAG,"BEES NUMBER IS"+ mDbHelper.COLUMN_NUMBERBEES);
             samplename.setText(note.getString(
                     note.getColumnIndexOrThrow(mDbHelper.COLUMN_NAME)));
+            Log.i(LOGTAG,"BEES Name IS"+ mDbHelper.COLUMN_NAME);
         }
     }
 
@@ -138,6 +145,7 @@ public class DisplayDatabase extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+    
     
     
 
