@@ -13,7 +13,7 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "ZomBeeWatch.db";
 	//updated database version after adding multiple tables to the db
-	private static final int DATABASE_VERSION = 2; 
+	private static final int DATABASE_VERSION = 5; 
 	
 	public static final String TABLE_Zombees_Step1 = "Zombees1";
 	public static final String COLUMN_ID = "Id";
@@ -41,7 +41,13 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_NOTES3 = "notes3";
 	public static final String COLUMN_FLIES = "flies";
     public static final String COLUMN_DATE3 = "date3";
-	
+    
+    
+    public static final String TABLE_columnids = "columnids";
+    public static final String COLUMN_STEP1_ID = "step1id";
+    public static final String COLUMN_STEP2_ID = "step2id";
+    public static final String COLUMN_STEP3_ID = "step3id";
+    
 	
 	private static final String TABLE_CREATE_STEP1 = 
 			"CREATE TABLE " + TABLE_Zombees_Step1 + " (" +
@@ -75,6 +81,20 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 				    COLUMN_DATE3 + " TEXT " +
 				    ")";
 	
+	private static final String TABLE_CREATE_OBS = 
+			"CREATE TABLE " + TABLE_columnids + " (" +
+					COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+					COLUMN_STEP1_ID + " INTEGER, " +
+					COLUMN_STEP2_ID + " INTEGER, " +
+					COLUMN_STEP3_ID + " INTEGER, " +
+					" FOREIGN KEY ("+COLUMN_STEP1_ID+") REFERENCES "+TABLE_Zombees_Step1+" ("+COLUMN_ID+"), "
+					+" FOREIGN KEY ("+COLUMN_STEP2_ID+") REFERENCES "+TABLE_Zombees_Step2+" ("+COLUMN_ID+"), "
+					+" FOREIGN KEY ("+COLUMN_STEP3_ID+") REFERENCES "+TABLE_Zombees_Step3+" ("+COLUMN_ID+") )";
+							
+					
+	
+	
+	
 	
 	public ZomBeeDBOpenHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -90,7 +110,8 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 		Log.i(LOGTAG,"Table2 has been created");
 		db.execSQL(TABLE_CREATE_STEP3);
 		Log.i(LOGTAG,"Table3 has been created");
-
+		db.execSQL(TABLE_CREATE_OBS);
+		Log.i(LOGTAG,"Table4 has been created");
 	}
 
 	@Override
@@ -103,6 +124,7 @@ public class ZomBeeDBOpenHelper extends SQLiteOpenHelper {
 		Log.i(LOGTAG,"After step 2");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_Zombees_Step3);
 		Log.i(LOGTAG,"After step 3");
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_columnids);
 		onCreate(db);
 		
 		

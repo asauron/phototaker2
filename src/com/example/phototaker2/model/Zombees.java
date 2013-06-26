@@ -146,6 +146,8 @@ public class Zombees {
 	public void setFlies(String flies) {
 		this.flies = flies;
 	}
+	
+	//public 
 
 	@Override
 	public String toString() {

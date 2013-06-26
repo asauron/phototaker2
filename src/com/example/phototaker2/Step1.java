@@ -134,6 +134,8 @@ public class Step1 extends Activity implements LocationListener {
    		
    		//Log.i(LOGTAG,"failed here");
    		Log.i(LOGTAG,"Zombee created with id"+currentZombee.getId());
+   		
+   		datasource.insertStep1id(currentZombee.getId());
 
    
     } 

@@ -85,6 +85,7 @@ public class Step2 extends Activity {
     	   		
     	   		//Log.i(LOGTAG,"failed here");
     	   		Log.i(LOGTAG,"STEP_2: Zombee created with id"+currentZombee.getId());
+    	   	//	datasource.insertStep2id();
     	
     } 
     

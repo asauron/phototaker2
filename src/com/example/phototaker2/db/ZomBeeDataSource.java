@@ -52,6 +52,15 @@ public class ZomBeeDataSource {
 		ZomBeeDBOpenHelper.COLUMN_FLIES
 		};
 	
+	private static final String[] allColumnsObservations = {
+		
+		
+		
+		ZomBeeDBOpenHelper.COLUMN_ID,
+		ZomBeeDBOpenHelper.COLUMN_STEP1_ID,
+		ZomBeeDBOpenHelper.COLUMN_STEP2_ID,
+		ZomBeeDBOpenHelper.COLUMN_STEP3_ID
+		};
 	
 	
 	public ZomBeeDataSource(Context context){
@@ -118,6 +127,39 @@ public class ZomBeeDataSource {
 		return zombee;
 	}
 	
+//	public Zombees createPendingObservations(Zombees zombee){
+//		Log.i(LOGTAG, "Create  step 4 got called");
+//		ContentValues values = new ContentValues();
+//		values.put(ZomBeeDBOpenHelper.COLUMN_STEP1_ID, zombee.getId());
+//		values.put(ZomBeeDBOpenHelper.COLUMN_STEP2_ID, zombee.getNotes3());
+//		values.put(ZomBeeDBOpenHelper.COLUMN_STEP3_ID, zombee.getFlies());
+//		
+//		long insertid = database.insert(ZomBeeDBOpenHelper.TABLE_Zombees_Step3, null, values);
+//		zombee.setId(insertid);
+//		return zombee;
+//	}
+	
+	public void insertStep1id(long id){
+		Log.i(LOGTAG, "Create - step 1 id insert got called");
+		ContentValues values = new ContentValues();
+		values.put(ZomBeeDBOpenHelper.COLUMN_STEP1_ID, id);
+		long insertid = database.insert(ZomBeeDBOpenHelper.TABLE_columnids, null, values);
+		
+	}
+	
+	public void insertStep2id(long insertid,long step2id){
+		Log.i(LOGTAG, "Create - step 2 id insert got called");
+		ContentValues values = new ContentValues();
+		values.put(ZomBeeDBOpenHelper.COLUMN_STEP2_ID, step2id);
+		 database.update(ZomBeeDBOpenHelper.TABLE_columnids, values, ZomBeeDBOpenHelper.COLUMN_ID + "=" + insertid, null);
+	}
+	
+	public void insertStep3id(long insertid,long step3id){
+		Log.i(LOGTAG, "Create - step 3 id insert got called");
+		ContentValues values = new ContentValues();
+		values.put(ZomBeeDBOpenHelper.COLUMN_STEP3_ID, step3id);
+		 database.update(ZomBeeDBOpenHelper.TABLE_columnids, values, ZomBeeDBOpenHelper.COLUMN_ID + "=" + insertid, null);
+	}
 
 	
 	public Cursor fetchAllNotesStep1() {
@@ -195,6 +237,12 @@ public class ZomBeeDataSource {
 			        return mCursor;
 
 			    }
+			    
+			    public Cursor fetchAllObservations() {
+
+			        return database.query(ZomBeeDBOpenHelper.TABLE_columnids, allColumnsObservations , null, null, null, null, null);
+			    }
+			    
 
 //	    public boolean updateStep1Note(long rowId, String title, String body) {
 //	        ContentValues args = new ContentValues();
