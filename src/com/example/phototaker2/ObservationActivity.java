@@ -66,16 +66,18 @@ public class ObservationActivity extends Activity {
 //        samplename.setText(note.getString(
 //                note.getColumnIndexOrThrow(mDbHelper.COLUMN_NAME)));
 //        Log.i(LOGTAG,"BEES Name IS"+ mDbHelper.COLUMN_NAME);
-        Vector<TextView> vec = new Vector<TextView>();
+        Vector<String> vec = new Vector<String>();
+        String dbstuff;
         while(note.moveToNext()){
         	Log.d("AAA","AAA");
         	TextView tv = new TextView(getApplicationContext());
         	//Log.d("AAA", note.getString(note.getColumnIndexOrThrow(database.COLUMN_STEP1_ID)));
         	tv.setText(note.getString(note.getColumnIndexOrThrow(database.COLUMN_STEP1_ID)));
-        	vec.add(tv);
+        	dbstuff = tv.getText().toString();
+        	vec.add(dbstuff);
         	
         }
-		ArrayAdapter<TextView> adapter = new ArrayAdapter<TextView>(this,
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, vec);
 		lv.setAdapter(adapter);
     }
