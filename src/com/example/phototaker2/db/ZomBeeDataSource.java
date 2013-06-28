@@ -240,17 +240,54 @@ public class ZomBeeDataSource {
 			    
 			    public Cursor fetchAllObservations() {
 
-			        return database.query(ZomBeeDBOpenHelper.TABLE_columnids, allColumnsObservations , null, null, null, null, null);
+			        //return database.query(ZomBeeDBOpenHelper.TABLE_columnids, allColumnsObservations , null, null, null, null, null);
+			    	return database.rawQuery("SELECT * FROM "+ ZomBeeDBOpenHelper.TABLE_columnids + " a JOIN "+ZomBeeDBOpenHelper.TABLE_Zombees_Step1+" b ON a."+ZomBeeDBOpenHelper.COLUMN_STEP1_ID+" =  b."+ZomBeeDBOpenHelper.COLUMN_ID, null);
 			    }
 			    
+			public int getNextStepfromName(String name){
+				Cursor c = database.rawQuery("SELECT * FROM "+ ZomBeeDBOpenHelper.TABLE_columnids + " a JOIN "+ZomBeeDBOpenHelper.TABLE_Zombees_Step1+" b ON a."+ZomBeeDBOpenHelper.COLUMN_STEP1_ID+" =  b."+ZomBeeDBOpenHelper.COLUMN_ID+" WHERE "+ZomBeeDBOpenHelper.COLUMN_NAME+" = ?", new String[]{name});
+				while (c.moveToNext())
+				{
+					Log.d("AAA","Step 1 id"+c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP1_ID)));
+					Log.d("AAA","Step 2 id"+c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP2_ID)));
+					Log.d("AAA","Step 3 id"+c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP3_ID)));
+					if(c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP2_ID)) == null)
+						return 2;
+					else if (c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP3_ID)) == null)
+						return 3;
+				}
+				return 0;
+			}
 
-//	    public boolean updateStep1Note(long rowId, String title, String body) {
-//	        ContentValues args = new ContentValues();
-//	        args.put(KEY_TITLE, title);
-//	        args.put(KEY_BODY, body);
-//
-//	        return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
-//	    }
+			public int getObservationIdByName(String name){
+				Cursor c = database.rawQuery("SELECT * FROM "+ ZomBeeDBOpenHelper.TABLE_columnids + " a JOIN "+ZomBeeDBOpenHelper.TABLE_Zombees_Step1+" b ON a."+ZomBeeDBOpenHelper.COLUMN_STEP1_ID+" =  b."+ZomBeeDBOpenHelper.COLUMN_ID+" WHERE "+ZomBeeDBOpenHelper.COLUMN_NAME+" = ?", new String[]{name});
+				if (c.moveToNext())
+					return c.getInt(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_ID));
+				return 0;
+
+			}
+
+			public Cursor getDataForSubmission(int obsId){
+				String query = "SELECT * FROM "+ ZomBeeDBOpenHelper.TABLE_columnids + " a JOIN "+ZomBeeDBOpenHelper.TABLE_Zombees_Step1+" b JOIN "+ZomBeeDBOpenHelper.TABLE_Zombees_Step2+" c JOIN "+ZomBeeDBOpenHelper.TABLE_Zombees_Step3+" d ON a."+ZomBeeDBOpenHelper.COLUMN_STEP1_ID+" =  b."+ZomBeeDBOpenHelper.COLUMN_ID+" AND a."+ZomBeeDBOpenHelper.COLUMN_STEP2_ID+" = c."+ZomBeeDBOpenHelper.COLUMN_ID+" AND a."+ZomBeeDBOpenHelper.COLUMN_STEP3_ID+" = d."+ZomBeeDBOpenHelper.COLUMN_ID+" WHERE a."+ZomBeeDBOpenHelper.COLUMN_ID+" = ?";
+				Log.d("QUERY",query);
+				Cursor c = database.rawQuery(query, new String[]{Integer.toString(obsId)});
+//				if (c.moveToNext()){
+//					
+//				
+//					Log.i("Submitting  ",c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_NAME)));
+//					//Log.i("Submitting  ",c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP2_ID)));
+//					//c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP2_ID));
+//					Log.i("Submitting  ",c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_LATTITUDE)));
+//					//c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP2_ID));
+//					Log.i("Submitting  ",c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_PUPAE)));
+//					//c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP2_ID));
+//					Log.i("Submitting  ",c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_FLIES)));
+//					//c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_STEP2_ID));
+//					//Log.i("Submitting  ",c.getString(c.getColumnIndexOrThrow(ZomBeeDBOpenHelper.COLUMN_IMAGE1)));
+//				}
+				
+				return c;
+			}
 	    
 	    
 	

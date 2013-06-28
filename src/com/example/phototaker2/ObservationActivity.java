@@ -12,6 +12,8 @@ import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -47,7 +49,7 @@ public class ObservationActivity extends Activity {
     
     
     public void createObservations(View view){
-		Intent intent = new Intent(this, CreateSteps.class);
+		Intent intent = new Intent(this, Step1.class);
 		startActivity(intent);
 	}
     
@@ -60,13 +62,7 @@ public class ObservationActivity extends Activity {
     	
     	Cursor note = datasource.fetchAllObservations();
         startManagingCursor(note);
-        Log.d("AAA","AAA1");
-//        beesnumber.setText(note.getString(
-//                note.getColumnIndexOrThrow(mDbHelper.COLUMN_NUMBERBEES)));
-//        Log.i(LOGTAG,"BEES NUMBER IS"+ mDbHelper.COLUMN_NUMBERBEES);
-//        samplename.setText(note.getString(
-//                note.getColumnIndexOrThrow(mDbHelper.COLUMN_NAME)));
-//        Log.i(LOGTAG,"BEES Name IS"+ mDbHelper.COLUMN_NAME);
+
         Vector<String> vec = new Vector<String>();
        
         
@@ -74,27 +70,48 @@ public class ObservationActivity extends Activity {
         	Log.d("AAA","AAA");
         	TextView tv = new TextView(getApplicationContext());
         	//Log.d("AAA", note.getString(note.getColumnIndexOrThrow(database.COLUMN_STEP1_ID)));
-        	tv.setText(note.getString(note.getColumnIndexOrThrow(database.COLUMN_STEP1_ID)));
+        	tv.setText(note.getString(note.getColumnIndexOrThrow(database.COLUMN_NAME)));
         	dbstuff = tv.getText().toString();
         	vec.add(dbstuff);
         	}
-        
-        long longValue = Long.parseLong(dbstuff);
-        Cursor note2 = datasource.fetchStep1Note(longValue);
-        startManagingCursor(note2);
-    // note2.getString(note2.getColumnIndexOrThrow(database.COLUMN_NUMBERBEES));
-        Log.d("Step 1 return","BEES Name IS "+  note2.getString(note2.getColumnIndexOrThrow(database.COLUMN_NAME)));
-      
-        Log.d("Step 1 return","BEES Name IS "+ database.COLUMN_NAME);
-        
-        vec.add( note2.getString(note2.getColumnIndexOrThrow(database.COLUMN_NAME)));
         
         
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, vec);
 		lv.setAdapter(adapter);
+		
+		lv.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Log.d("observation method", (((TextView) arg1).getText().toString()));
+				//retrieve next todo step from db
+				int nextStep = datasource.getNextStepfromName(((TextView) arg1).getText().toString());
+				Log.d("AAAA","next :"+nextStep);
+				if (nextStep == 2){
+					int observationId = datasource.getObservationIdByName(((TextView) arg1).getText().toString());
+					Intent intent = new Intent(getApplicationContext(), Step2.class);
+					intent.putExtra("obId",observationId);
+					startActivity(intent);
+				}
+				if (nextStep == 3){
+					int observationId = datasource.getObservationIdByName(((TextView) arg1).getText().toString());
+					Intent intent = new Intent(getApplicationContext(), Step3.class);
+					intent.putExtra("obId",observationId);
+					startActivity(intent);
+				}
+						
+				
+			}
+			
+		});
+			
+		}
+		
     }
     
     
     
-}
+

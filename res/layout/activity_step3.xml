@@ -64,10 +64,10 @@
 </Button>
 
                       <Button  
-    android:id="@+id/ButtonSendFeedback"  
+    android:id="@+id/ButtonSendApproval"  
     android:layout_height="wrap_content"  
     android:text="Submit for Approval"  
-    android:onClick="sendFeedback"  
+    android:onClick="submitObservation"  
     android:layout_width="fill_parent">  
 </Button> 
     </LinearLayout>

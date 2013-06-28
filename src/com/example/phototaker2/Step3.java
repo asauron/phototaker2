@@ -85,7 +85,11 @@ public class Step3 extends Activity {
   	   		
   	   		//Log.i(LOGTAG,"failed here");
   	   		Log.i(LOGTAG,"STEP_3: Zombee created with id"+currentZombee.getId());
-    	
+  	   		
+  	   	Bundle bdn = getIntent().getExtras();
+   		
+   		datasource.insertStep3id(bdn.getInt("obId"), currentZombee.getId());
+  	   
     	
     } 
     
@@ -129,6 +133,15 @@ public class Step3 extends Activity {
 		      return dateDlg;
 		}
 		return null;
+	}
+	
+	public void submitObservation(View view) {
+//	Bundle bdn = getIntent().getExtras();
+   		Log.d("AAA","ASDASDASDASDADS");
+   		Bundle bnd = getIntent().getExtras();
+   		datasource.getDataForSubmission(bnd.getInt("obId"));
+		
+		
 	}
 
 }

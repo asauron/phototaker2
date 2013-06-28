@@ -62,9 +62,9 @@ public class Step1 extends Activity implements LocationListener {
         datasource.open();
         Log.i(LOGTAG,"WHAT");
      // CreateData();
-        
         latituteField = (TextView) findViewById(R.id.TextView02);
 	    longitudeField = (TextView) findViewById(R.id.TextView04);
+        
 
 	    // Get the location manager
 	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
